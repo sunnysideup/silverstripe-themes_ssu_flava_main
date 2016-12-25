@@ -29,5 +29,5 @@ Installation Instructions
 use composer
 
 ```
-    require sunnysideup/themes_ssu_flava_main
+    composer require sunnysideup/themes_ssu_flava_main
 ```
