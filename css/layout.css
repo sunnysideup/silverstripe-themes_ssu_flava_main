@@ -17,7 +17,7 @@ body.mobileBrowsing {
     background-position: right top; background-repeat: no-repeat; background-color: #FFCC33;
     background-image: url("/themes/main/images/mobile-webdesign.gif");
     padding-top: 166px;
-    border: 10px solid #fff;
+    border: 5px solid #fff;
 }
 body.hasMenuOverlay {
     overflow: hidden;
