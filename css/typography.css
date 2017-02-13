@@ -115,7 +115,7 @@
 
 }
 /* images for CMS formatting */
-.typography img.left{float: left; margin: 0em 1em 1em 0!important;}
+.typography img.left{float: left; margin: 0em 1em 2em 0!important;}
 .typography img.right{float: right; margin: 0em 0 1em 1em;}
 .typography img.center{float: none; display: block;margin: 1em auto 1em auto;}
 .typography img.leftAlone{float: none; display: block;margin: 1em 0 1em 0; }

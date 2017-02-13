@@ -125,6 +125,7 @@
 
 .hasMenuOverlay nav {
     display: block!important;
+    z-index: 1;
 }
 
 .menuButton {
