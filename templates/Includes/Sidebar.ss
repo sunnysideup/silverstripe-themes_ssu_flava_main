@@ -41,7 +41,7 @@
     </ul>
 <% if RandomImage %>
     <p>
-        To make web-tech speak a bit less boring here is a random picture from the real world to spice it up:
+        To make web-tech speak a bit more flavoursome, here is a picture from the real world to spice it up:
     </p>
     <div id="RandomVisualThought" style="background-image: url($RandomImage.URL); width: 200px; height: 200px;" rel="$RandomImage.URL"></div>
 <% end_if %>
