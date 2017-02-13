@@ -1,7 +1,7 @@
 .typography{color:#808383; font-size: 1.4em;}
 
 /* HEADINGS */
-.typography h1 {color: #FFCC33; font-size: 1.77em; line-height: 0.85em; text-transform: uppercase;}
+.typography h1 {color: #ffcc1a; font-size: 1.77em; line-height: 0.85em; text-transform: uppercase;}
 	.typography h1#PageTitle, .typography h1.pageTitle{margin-top: 0!important; padding-top: 0!important; }
 .typography h2 {color: #FF336D; font-size: 1.33em; }
 .typography h3 {font-size: 1em;font-weight: bold; color: #326874}
@@ -132,14 +132,14 @@
 #colourTable td {width: 100px!important; height: 100px!important; vertical-align: top;}
 .backgroundcolour1 {background-color: #808383!important;}  /* grey */
 .backgroundcolour2 {background-color: #FF336D!important;}  /* green */
-.backgroundcolour3 {background-color: #FFCC33!important;}  /* yellow */
+.backgroundcolour3 {background-color: #ffcc1a!important;}  /* yellow */
 .backgroundcolour4 {background-color: #D3D4B6!important;}  /* sandy grey */
 .backgroundcolour5 {background-color: #298599!important;} /* red */
 .backgroundcolour6 {background-color: #326874!important;} /* red */
 
 .fontcolour1 {color: #808383!important;}  /* grey */
 .fontcolour2 {color: #FF336D!important;}  /* green */
-.fontcolour3 {color: #FFCC33!important;}  /* yellow */
+.fontcolour3 {color: #ffcc1a!important;}  /* yellow */
 .fontcolour4 {color: #D3D4B6!important;}  /* sandy grey */
 .fontcolour5 {color: #298599!important;} /* red */
 .fontcolour6 {color: #326874!important;} /* red */

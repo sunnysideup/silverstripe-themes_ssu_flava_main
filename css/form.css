@@ -30,7 +30,7 @@
 
 		.typography .message{
 			font-weight: bold;
-			background-color: #FFCC33;
+			background-color: #ffcc1a;
 			display: block;
 			padding: 4px;
 			text-align: center;
@@ -67,9 +67,9 @@
 	padding-right: 30px;
 }
 .typography .middleColumn input:focus, .typography .middleColumn textarea:focus, .typography .middleColumn select:focus{
-	-webkit-box-shadow: 0px 0px 5px #FFCC33;
-	-moz-box-shadow: 0px 0px 5px #FFCC33;
-	box-shadow: 0px 0px 5px #FFCC33;
+	-webkit-box-shadow: 0px 0px 5px #ffcc1a;
+	-moz-box-shadow: 0px 0px 5px #ffcc1a;
+	box-shadow: 0px 0px 5px #ffcc1a;
 	color: #FF336D;
 	outline: none!important;
 }
@@ -134,12 +134,12 @@ input[type=email], input[type="text"], input[type="password"], textarea, select 
 	background: -moz-linear-gradient(
 		top,
 		#ffffff 0%,
-		#ffcc33
+		#ffcc1a
 	);
 	background: -webkit-gradient(
 		linear, left top, left bottom,
 		from(#ffffff),
-		to(#ffcc33)
+		to(#ffcc1a)
 	);
 	border: 1px solid #808383;
 	color: #808383;
