@@ -104,6 +104,11 @@
     padding-right: 0px;
 }
 
+.mobileBrowsing #Nav > ul > li{
+    padding-right: 0px;
+    padding: 1.5em 40px;
+}
+
 .mobileBrowsing #Nav ul {
     display: none;
 }
