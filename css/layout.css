@@ -100,8 +100,7 @@ body.hasMenuOverlay:after {
 }
 
 .mobileBrowsing h1#PageTitle {
-    padding-top: 1em!important;
-    padding-bottom: 1em!important;
+    padding-top: 0.5em!important;
 }
 
 #SidebarSection {
@@ -113,6 +112,11 @@ body.hasMenuOverlay:after {
 #Layout, footer {
     padding: 67px 270px 50px 210px;
     max-width: 770px;
+}
+.mobileBrowsing #Layout, .mobileBrowsing footer {
+    max-width: 90000px;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 #Layout footer {
@@ -142,7 +146,7 @@ body.hasMenuOverlay:after {
     width: 200px;
     padding: 12px;
     padding-bottom: 200px;
-    background-color: #D3D4B6;
+    background-color: #f2f2f2;
     /*background-image: url(/themes/main/images/pat.png);*/
     border: 0px solid #fff;
     -webkit-border-bottom-right-radius: 5px;
@@ -207,8 +211,12 @@ body.hasMenuOverlay:after {
 #Sidebar ul li {
     margin-left: 0px;
     padding-left: 0px;
-    list-style-position: inside;
     list-style-image: none;
+    line-height: 1;
+
+}
+#Sidebar ul li:before {
+    content: '»'
 }
 
 #Sidebar ul li.current a {
@@ -307,24 +315,20 @@ footer {
 }
 
 #SidebarChildren li a, #SidebarSiblings li a {
-    display: block;
-    padding: 5px;
+    display: inline-block;;
     text-decoration: none;
     border-bottom: 1px solid #fafafa;
-    font-size: 88%;
+    padding-left: 0.2em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
 }
 
 #SidebarChildren li a:hover, #SidebarSiblings li a:hover {
-    -webkit-border-bottom-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    -moz-border-radius-bottomright: 5px;
-    background-color: #808383;
-    color: #fff;
 }
 
 .resultsBar, .pageNumbers, .filterSortDisplayAndSearch {
     font-size: 12px;
-    background-color: #D3D4B6;
+    background-color: #f2f2f2;
     /* gradient */
     background-position: 0px center;
     background-repeat: no-repeat;
@@ -341,6 +345,11 @@ footer {
 .pageNumbers {
 }
 /***************************** START RANDOM IMAGE ******************/
+#RandomVisualThought {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2em;
+}
 #RandomImage {
     cursor: pointer;
 }
