@@ -32,12 +32,12 @@ body.mobileBrowsing {
     background-color: #ffcc1a;
     background-image: url("/themes/main/images/mobile-webdesign.gif");
     padding-top: 166px;
-    border: 5px solid #fff;
 }
 
 body.hasMenuOverlay {
     padding-top: 0!important;
 }
+
 
 
 
@@ -119,6 +119,22 @@ body.hasMenuOverlay:after {
     padding-right: 0;
 }
 
+body.mobileBrowsing #LayoutHolder, body.mobileBrowsing #Wrapper footer {
+    padding: 40px;
+}
+
+@media screen and (max-width: 480px) {
+    body.mobileBrowsing #LayoutHolder, body.mobileBrowsing #Wrapper footer {
+        padding: 20px;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    body.mobileBrowsing #LayoutHolder, body.mobileBrowsing #Wrapper footer {
+        padding: 10px;
+    }
+}
+
 #Layout footer {
     padding: 67px 0 50px 0;
 }
@@ -141,7 +157,7 @@ body.hasMenuOverlay:after {
 
 #Sidebar {
     position: absolute;
-    top: 40px;
+    top: 15vh;
     right: 20px;
     width: 200px;
     padding: 12px;

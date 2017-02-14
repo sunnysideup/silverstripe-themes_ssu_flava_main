@@ -200,7 +200,14 @@ var windowResizer = {
         }
         else {
             jQuery("body").removeClass("mobileBrowsing");
-            jQuery("#Sidebar").width(this.standardSidebarWidth+"px").show();
+            var width = jQuery(window).width() - 1200;
+            if(width > 450) {
+                width = 450;
+            }
+            if (width < 200) {
+                width = 200;
+            }
+            jQuery("#Sidebar").width(width+"px").show();
             SSUhoverMenu.set_mobileBrowsing(false);
             SSUhoverMenu.reset();
         }

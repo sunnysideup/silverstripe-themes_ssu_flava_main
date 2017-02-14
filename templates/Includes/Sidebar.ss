@@ -27,7 +27,7 @@
 
 
 <div class="sidebarBox" id="RandomImage">
-    <h3>About Sunny Side Up</h3>
+    <h3>our web presence</h3>
     <p>
         Sunny Side Up is a Wellington, Aotearoa (NZ) based web development company.
         Our web-sites include:

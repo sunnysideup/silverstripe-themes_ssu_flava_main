@@ -21,6 +21,7 @@
     line-height: 0.85em;
     font-size: 9vh;
     padding-top: 1em;
+    padding-bottom: 0.3em;
 }
 
 .typography h1#PageTitle, .typography h1.pageTitle {
@@ -264,12 +265,11 @@
 
 /* ---- inline elements */
 .typography strong, .typography b {
-    font-weight: normal!important;
-    color: #326874
 }
 
 .typography em {
-    font-style: italic;
+    font-style: normal!important;
+    color: #326874
 }
 
 .typography u {

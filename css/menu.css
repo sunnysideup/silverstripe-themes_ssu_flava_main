@@ -99,6 +99,10 @@
     display: block;
 }
 
+.mobileBrowsing #Nav ul li{
+    padding-right: 0px;
+}
+
 .mobileBrowsing #Nav ul {
     display: none;
 }
