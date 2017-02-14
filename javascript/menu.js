@@ -204,8 +204,8 @@ var windowResizer = {
             if(width > 450) {
                 width = 450;
             }
-            if (width < 200) {
-                width = 200;
+            if (width < this.standardSidebarWidth) {
+                width = this.standardSidebarWidth;
             }
             jQuery("#Sidebar").width(width+"px").show();
             SSUhoverMenu.set_mobileBrowsing(false);
