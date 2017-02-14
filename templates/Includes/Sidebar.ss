@@ -29,19 +29,18 @@
 <div class="sidebarBox" id="RandomImage">
     <h3>our web presence</h3>
     <p>
-        Sunny Side Up is a Wellington, Aotearoa (NZ) based web development company.
-        Our web-sites include:
+        Sunny Side Up has a few small sites - each with its own audience:
     </p>
     <ul>
         <li><a href="http://www.sunnysideup.co.nz/">www.sunnysideup.co.nz</a>: about Sunny Side Up;</li>
-        <li><a href="http://www.ssmods.com/">ssmods.com</a>: find the world's best Silverstripe Modules;</li>
         <li><a href="http://www.silverstripe-ecommerce.com/">silverstripe-ecommerce.com</a>: our e-commerce demo;</li>
-        <li><a href="http://www.upgradesilverstripe.com/">upgradesilverstripe.com</a>: helps you to upgrade your silverstripe sites; and</li>
-        <li><a href="http://www.silverstripe-webdevelopment.com/">silverstripe-webdevelopment.com</a>: some developer notes.</li>
+        <li><a href="http://www.upgradesilverstripe.com/">upgradesilverstripe.com</a>: help with upgrading your silverstripe sites; and</li>
+        <li><a href="http://www.ssmods.com/">ssmods.com</a>: find the world's best Silverstripe themes and modules;</li>
+        <li><a href="http://www.silverstripe-webdevelopment.com/">silverstripe-webdevelopment.com</a>: notes for developers.</li>
     </ul>
 <% if RandomImage %>
     <p>
-        To make web-tech speak a bit more flavoursome, here is a picture from the real world to spice it up:
+        To make web-tech speak a bit more flavoursome, here is a random picture from the real world:
     </p>
     <div id="RandomVisualThought" style="background-image: url($RandomImage.URL); width: 200px; height: 200px;" rel="$RandomImage.URL"></div>
 <% end_if %>
