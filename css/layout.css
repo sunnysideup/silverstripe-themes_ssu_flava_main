@@ -90,12 +90,12 @@ body.hasMenuOverlay:after {
     text-align: right;
     padding: 0;
     position: absolute;
-    top: 7px;
+    top: 20px;
     font-size: 12px;
 }
 
 .mobileBrowsing #Breadcrumbs {
-    padding: 5px 5px 5px 0px;
+    padding: 10px;
     margin-left: 25px;
 }
 
@@ -157,7 +157,7 @@ body.mobileBrowsing #LayoutHolder, body.mobileBrowsing #Wrapper footer {
 
 #Sidebar {
     position: absolute;
-    top: 15vh;
+    top: 20px;
     right: 20px;
     width: 200px;
     padding: 12px;
@@ -232,7 +232,9 @@ body.mobileBrowsing #LayoutHolder, body.mobileBrowsing #Wrapper footer {
 
 }
 #Sidebar ul li:before {
-    content: '»'
+    content: '»';
+    display: inline-block;
+    margin-right: 2px;
 }
 
 #Sidebar ul li.current a {

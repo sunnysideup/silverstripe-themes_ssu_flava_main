@@ -10,7 +10,7 @@
     </ul>
 <% end_if %>
 <% if MenuChildren %>
-    <h3>In the <i>$MenuTitle</i> section</h3>
+    <h3>In the <strong>$MenuTitle</strong> section</h3>
     <ul>
         <% loop MenuChildren %><li class="$FirstLast $LinkingMode"><a href="$Link">$MenuTitle</a></li><% end_loop %>
     </ul>

@@ -59,6 +59,7 @@
     display: block;
     float: none;
     text-align: left;
+    padding-left: 0px;
 }
 
 #Nav ul li.first {

@@ -451,24 +451,3 @@ div.media iframe {
 
 /* IMAGES
 -------------------------------------------- */
-
-body.mobileBrowsing .typography img {
-    max-width: 100%!important;
-    padding-left: 0px;
-    padding-right: 0px;
-    margin-right: 0px;
-    margin-left: 0px;
-}
-
-body.mobileBrowsing .typography p, body.mobileBrowsing .typography li, body.mobileBrowsing .typography address {
-    font-size: 1em;
-}
-
-body.mobileBrowsing .typography ul {
-    -moz-column-count: 1;
-    -moz-column-gap: 0;
-    -webkit-column-count: 1;
-    -webkit-column-gap: 0;
-    column-count: 1;
-    column-gap: 0;
-}
