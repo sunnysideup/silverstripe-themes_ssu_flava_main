@@ -169,6 +169,7 @@ body.mobileBrowsing #LayoutHolder, body.mobileBrowsing #Wrapper footer {
     border-bottom-right-radius: 5px;
     -moz-border-radius-bottomright: 5px;
     border-top: 18px solid #808383;
+    border-bottom: 1px solid #808383;
     /* let JS add it ! */
 }
 
