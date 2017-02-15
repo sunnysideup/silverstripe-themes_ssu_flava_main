@@ -39,9 +39,9 @@
         <li><a href="http://www.silverstripe-webdevelopment.com/">silverstripe-webdevelopment.com</a>: notes for developers.</li>
     </ul>
 <% if RandomImage %>
+    <p id="RandomVisualThoughtExplanation">
+        Care for some ketchup?
     <p>
-        To make web-tech speak a bit more flavoursome, here is a random picture from the real world:
-    </p>
-    <div id="RandomVisualThought" style="background-image: url($RandomImage.URL); width: 200px; height: 200px;" rel="$RandomImage.URL"></div>
+    <div id="RandomVisualThought" style="background-image: url($RandomImage.URL);" rel="$RandomImage.URL"></div>
 <% end_if %>
 </div>

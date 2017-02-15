@@ -113,24 +113,37 @@ var windowResizer = {
         if(jQuery("#RandomVisualThought").length > 0) {
             jQuery("#RandomVisualThought").click(
                 function(el) {
-                    var url = jQuery(this).attr("rel");
-                    jQuery("body").append('<div id="RandomImageLarge"><img src="'+url+'" alt="random image large" /></div>');
-                    jQuery("#RandomImageLarge")
-                        //.css('background-image', 'url('+url+')')
-                        .click(
-                            function(){
-                                jQuery(this).remove();
-                                jQuery(document).removeAttr("keydown");
+                    if(jQuery('#RandomImageLarge').length > 0) {
+                        jQuery('#RandomImageLarge').click();
+                    } else {
+                        var url = jQuery(this).attr("rel");
+                        jQuery("body")
+                            .prepend('<div id="RandomImageLarge" style="background-image: url('+url+'); background-size: cover;"></div>')
+                            .addClass('has-random-image');
+                        jQuery('#RandomImageLarge').css('zIndex', 999);
+                        jQuery('#RandomVisualThoughtExplanation').hide();
+                        windowResizer.imageflicker('#RandomImageLarge', 0);
+
+                        jQuery("#RandomImageLarge")
+                            //.css('background-image', 'url('+url+')')
+                            .click(
+                                function(){
+                                    jQuery(this).remove();
+                                    jQuery(document).removeAttr("keydown");
+                                    jQuery('body').removeClass('has-random-image');
+
+
+                                }
+                            );
+                        windowResizer.resizeImage();
+                        jQuery(document).keydown(
+                            function(e) {
+                                if(jQuery('#RandomImageLarge').length) {
+                                    if (e.which == 27) {jQuery('#RandomImageLarge').click(); }  // esc   (does not work)
+                                }
                             }
                         );
-                    windowResizer.resizeImage();
-                    jQuery(document).keydown(
-                        function(e) {
-                            if(jQuery('#RandomImageLarge').length) {
-                                if (e.which == 27) {jQuery('#RandomImageLarge').click(); }  // esc   (does not work)
-                            }
-                        }
-                    );
+                    }
                 }
             );
         }
@@ -216,8 +229,39 @@ var windowResizer = {
     getWindowSizing : function(){
         this.windowWidth = window.innerWidth;
         this.windowHeight = window.innerHeight;
-    }
+    },
 
+    imageflicker: function(selector, count) {
+        if(typeof count === 'undefined') {
+            count = 0;
+        }
+        count++;
+
+        if(windowResizer.isEven(count)) {
+            jQuery(selector).hide();
+        } else {
+            jQuery(selector).show();
+        }
+        if(count < 14) {
+            var wait = Math.floor(Math.random() * 100);
+            if(count === 13) {
+                wait = 700;
+            }
+            window.setTimeout(
+                function() {windowResizer.imageflicker(selector, count);},
+                wait
+            );
+        }
+        else {
+            jQuery(selector).css('zIndex', 0);
+            jQuery(selector).show();
+        }
+    },
+
+    isEven: function(n) {
+        n = Number(n);
+        return n === 0 || !!(n && !(n%2));
+    }
 }
 
 
