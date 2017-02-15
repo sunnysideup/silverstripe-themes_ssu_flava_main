@@ -40,7 +40,7 @@
     </ul>
 <% if RandomImage %>
     <p id="RandomVisualThoughtExplanation">
-        Care for some ketchup?
+        Prefer dark web / hipster / random?
     <p>
     <div id="RandomVisualThought" style="background-image: url($RandomImage.URL);" rel="$RandomImage.URL"></div>
 <% end_if %>

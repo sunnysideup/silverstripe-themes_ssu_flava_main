@@ -223,11 +223,9 @@ input[type=text], input[type=email], input[type=password], textarea, select {
 
 input[type=email], input[type="text"], input[type="password"], textarea, select {
     border: 1px solid;
-    border-color: #888888 #bbbbbb #e0e0e0;
     background: white;
-    -moz-box-shadow: inset 0px 0px 5px #e0e0e0;
-    -webkit-box-shadow: inset 0px 0px 5px #e0e0e0;
-    box-shadow: inset 0px 0px 5px #e0e0e0;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #aaa!important;
 }
 
 .optionset .middleColumn ul, .checkboxset .middleColumn ul {

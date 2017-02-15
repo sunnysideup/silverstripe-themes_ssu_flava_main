@@ -318,13 +318,6 @@
     margin-bottom: 10px;
     display: block;
     border: 1px solid #808383;
-    -moz-box-shadow: 3px 3px 4px #808383;
-    -webkit-box-shadow: 3px 3px 4px #808383;
-    box-shadow: 3px 3px 4px #808383;
-    /* For IE 8 */
-    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#808383')";
-    /* For IE 5.5 - 7 */
-    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#808383');
 }
 /* images for CMS formatting */
 .typography img.left {
