@@ -161,7 +161,7 @@ body.mobileBrowsing #LayoutHolder, body.mobileBrowsing #Wrapper footer {
     right: 20px;
     width: 200px;
     padding: 12px;
-    padding-bottom: 200px;
+    padding-bottom: 60px;    
     background-color: #f2f2f2;
     /*background-image: url(/themes/main/images/pat.png);*/
     border: 0px solid #fff;
@@ -260,7 +260,6 @@ body.mobileBrowsing #LayoutHolder, body.mobileBrowsing #Wrapper footer {
     top: auto!important;
     width: auto!important;
     margin-bottom: 10px!important;
-    padding-bottom: 30px!important;
 }
 
 .mobileBrowsing #Layout .sidebarTop {
@@ -422,7 +421,10 @@ body.has-random-image .mainSection {
     opacity: 0.9;
     background-color: #fff;
     border: 20px solid #fff;
+    border-top: 47px solid #fff;
     border-radius: 5px;
+    margin-top: -47px;
+    margin-left: -20px;
 }
 
 
