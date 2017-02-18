@@ -34,8 +34,8 @@
     <ul>
         <li><a href="http://www.sunnysideup.co.nz/">www.sunnysideup.co.nz</a>: about Sunny Side Up;</li>
         <li><a href="http://www.silverstripe-ecommerce.com/">silverstripe-ecommerce.com</a>: our e-commerce demo;</li>
-        <li><a href="http://www.upgradesilverstripe.com/">upgradesilverstripe.com</a>: help with upgrading your silverstripe sites; and</li>
         <li><a href="http://www.ssmods.com/">ssmods.com</a>: find the world's best Silverstripe themes and modules;</li>
+        <li><a href="http://www.upgradesilverstripe.com/">upgradesilverstripe.com</a>: help with upgrading your silverstripe sites; and</li>
         <li><a href="http://www.silverstripe-webdevelopment.com/">silverstripe-webdevelopment.com</a>: notes for developers.</li>
     </ul>
     <h3 id="RandomVisualThoughtHeader">Looking for more?</h3>
