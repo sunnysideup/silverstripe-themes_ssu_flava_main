@@ -1,4 +1,5 @@
 
+<% if $Siblings || $MenuChildren %>
 <div class="sidebarBox" id="SidebarChildren">
 <% if Siblings %>
     <h3>Sibling Pages</h3>
@@ -16,6 +17,7 @@
     </ul>
 <% end_if %>
 </div>
+<% end_if %>
 
 
 <% if SearchForm %>
