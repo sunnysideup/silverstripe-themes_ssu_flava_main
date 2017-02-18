@@ -163,14 +163,12 @@ body.mobileBrowsing #LayoutHolder, body.mobileBrowsing #Wrapper footer {
     padding: 12px;
     padding-bottom: 60px;
     background-color: #f2f2f2;
-    /*background-image: url(/themes/main/images/pat.png);*/
     border: 0px solid #fff;
     -webkit-border-bottom-right-radius: 5px;
     border-bottom-right-radius: 5px;
     -moz-border-radius-bottomright: 5px;
     border-top: 18px solid #808383;
     border-bottom: 1px solid #ccc;
-    /* let JS add it ! */
 }
 
 #Sidebar .sidebarBox {
