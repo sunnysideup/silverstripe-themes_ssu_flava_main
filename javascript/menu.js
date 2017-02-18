@@ -118,10 +118,8 @@ var windowResizer = {
                     } else {
                         var url = jQuery(this).attr("rel");
                         jQuery("body")
-                            .prepend('<div id="RandomImageLarge" style="background-image: url('+url+'); background-size: cover;"></div>')
-                            .addClass('has-random-image');
+                            .prepend('<div id="RandomImageLarge" style="background-image: url('+url+'); background-size: cover;"></div>');
                         jQuery('#RandomImageLarge').css('zIndex', 999);
-                        jQuery('#RandomVisualThoughtExplanation').hide();
                         windowResizer.imageflicker('#RandomImageLarge', 0);
 
                         jQuery("#RandomImageLarge")
@@ -253,6 +251,7 @@ var windowResizer = {
             );
         }
         else {
+            jQuery("body").addClass('has-random-image');
             jQuery(selector).css('zIndex', 0);
             jQuery(selector).show();
         }

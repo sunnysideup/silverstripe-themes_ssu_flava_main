@@ -38,10 +38,11 @@
         <li><a href="http://www.ssmods.com/">ssmods.com</a>: find the world's best Silverstripe themes and modules;</li>
         <li><a href="http://www.silverstripe-webdevelopment.com/">silverstripe-webdevelopment.com</a>: notes for developers.</li>
     </ul>
+    <h3 id="RandomVisualThoughtHeader">Looking for more?</h3>
 <% if RandomImage %>
     <p id="RandomVisualThoughtExplanation">
         Prefer dark web / hipster / random?
     <p>
-    <div id="RandomVisualThought" style="background-image: url($RandomImage.URL);" rel="$RandomImage.URL"></div>
+    <div id="RandomVisualThought" style="background-image: url($RandomImage);" rel="$RandomImage"></div>
 <% end_if %>
 </div>

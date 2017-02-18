@@ -252,6 +252,16 @@ body.mobileBrowsing #LayoutHolder, body.mobileBrowsing #Wrapper footer {
     line-height: 1;
 }
 
+#SidebarChildren li a, #SidebarSiblings li a {
+    display: inline;
+    padding-left: 0.2em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    text-decoration: underline;
+}
+
+#SidebarChildren li a:hover, #SidebarSiblings li a:hover {
+}
 
 
 .mobileBrowsing #Layout #Sidebar {
@@ -332,17 +342,6 @@ footer {
     width: 90%!important;
 }
 
-#SidebarChildren li a, #SidebarSiblings li a {
-    display: inline-block;;
-    text-decoration: none;
-    border-bottom: 1px solid #fafafa;
-    padding-left: 0.2em;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-}
-
-#SidebarChildren li a:hover, #SidebarSiblings li a:hover {
-}
 
 .resultsBar, .pageNumbers, .filterSortDisplayAndSearch {
     font-size: 12px;
@@ -413,20 +412,61 @@ footer {
     cursor: pointer;
 }
 
-body.has-random-image  #Sidebar {
-    background-color: #000;
-    opacity: 0.9;
-    border-top: 18px solid #000;
+
+body.has-random-image #RandomVisualThoughtExplanation,
+body.has-random-image #RandomVisualThoughtHeader {
+    display: none;
 }
 body.has-random-image .mainSection {
     position: relative;
     z-index: 1;
     opacity: 0.9;
-    background-color: #000;
-    border: 20px solid #000;
-    border-top: 47px solid #000;
+    background-color: #030003;
+    border: 20px solid #030003;
+    border-top: 47px solid #030003;
     margin-top: -47px;
     margin-left: -20px;
+    border-radius: 0 0 20px 0;
+}
+
+body.has-random-image #Sidebar {
+    background-color: #030003;
+    opacity: 0.9;
+    border-top: 18px solid #070007;
+    border-bottom: 5px solid #070007;
+}
+body.has-random-image #RandomVisualThought {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    bottom: auto;
+    right: auto;
+    border-radius: 0;
+    border-color: #222;
+    background-image:url("/themes/main/images/mobile-webdesign.gif")!important;
+    width: 150px;
+    height: 92px;
+}
+
+body.has-random-image.mobileBrowsing #RandomImageLarge {
+    top: 166px;
+}
+
+body.has-random-image.mobileBrowsing .mainSection {
+    border-top: none;
+    margin-top: 0;
+    margin-left: 0;
+}
+
+body.has-random-image.mobileBrowsing {
+}
+
+body.has-random-image.mobileBrowsing #RandomVisualThought {
+    display: none;
+}
+
+body.has-random-image.mobileBrowsing #Wrapper {
+    background-color: transparent;
 }
 
 
