@@ -14,70 +14,6 @@ jQuery("#Sidebar, #nav").hide();
 })(jQuery);
 
 
-var SSUhoverMenu = {
-
-    init: function(){
-        jQuery(".menuButton").on(
-            "click",
-            function() {
-                jQuery("aside").slideToggle();
-                jQuery("body").toggleClass("hasMenuOverlay");
-                return false;
-            }
-        );
-    },
-
-    mobileBrowsing: true,
-    set_mobileBrowsing: function(b) {this.mobileBrowsing = b;},
-    animateIn: {opacity: "1"},
-    animateOut: {opacity: "0.85"},
-
-    reset: function() {
-        jQuery("body").removeClass("hasMenuOverlay");
-        jQuery("#Nav").show();
-        jQuery(".hasCSSHover").removeClass("hasCSSHover");
-
-        if(this.mobileBrowsing) {
-            jQuery("aside").hide();
-        }
-        else {
-            jQuery("aside").show();
-            jQuery("#Nav li.level1").hoverIntent(
-                {
-                    over: SSUhoverMenu.menuIn,  // function = onMouseOver callback (required)
-                    timeout: 200,   // number = milliseconds delay before onMouseOut function call
-                    out: SSUhoverMenu.menuOut  // function = onMouseOut callback (required)
-                }
-            );
-            jQuery("#Nav").hoverIntent(
-                {
-                    over: function(){jQuery(this).animate(SSUhoverMenu.animateIn).addClass("menuIn").removeClass("menuOut");},  // function = onMouseOver callback (required)
-                    timeout: 1500,   // number = milliseconds delay before onMouseOut function call
-                    out: function(){jQuery(this).animate(SSUhoverMenu.animateOut).addClass("menuOut").removeClass("menuIn");}  // function = onMouseOut callback (required)
-                }
-            );
-            jQuery("#Nav").children("li").each(
-                function(i, el) {
-                    var parentOffset = jQuery(el).offset();
-                    var left = parentOffset.left;
-                    var docWidth = jQuery(document).width();
-                    if(left > (docWidth - 270)) {
-                        left = docWidth - 270;
-                    }
-                    leftString = left + "px";
-                    jQuery(el).children("ul").animate({paddingLeft: leftString});
-                }
-            );
-            jQuery("#Nav").animate(SSUhoverMenu.animateOut).addClass("menuOut").removeClass("menuIn");
-        }
-    },
-
-    menuIn: function() {jQuery(this).children("ul").slideDown()},
-
-    menuOut: function() {jQuery(this).children("ul").slideUp()}
-
-}
-
 
 /*
  *@author nicolaas[at]sunnysideup.co.nz
@@ -91,25 +27,47 @@ var windowResizer = {
 
     windowHeight: 0,
 
-    minWrapperWidth: 530,
-
-    minWrapperHeight: 400,
-        set_min_wrapper_height: function(v) {this.minWrapperHeight = v;},
-
-    maxWrapperWidth: 1920,
-
-    maxWrapperHeight: 1449,
-
     smallScreenMaxSize: 960,
 
-    imageWidth: "",
-
-    imageHeight: "",
-
-    imageSelector : '#RandomVisualThought',
+    standardSidebarWidth: 200,
 
     init : function() {
         windowResizer.manageSidebar();
+        windowResizer.randomImageClick();
+        //redo when window is resized
+        jQuery(window).resize(
+            function() {
+                windowResizer.manageSidebar();
+            }
+        );
+    },
+
+
+    manageSidebar: function(){
+        this.getWindowSizing();
+        if(this.windowWidth < this.smallScreenMaxSize) {
+            jQuery("body").addClass("mobileBrowsing");
+            var layoutHolderWidth = jQuery("#LayoutHolder").width();
+            jQuery("#Sidebar")
+                .width( layoutHolderWidth+"px" )
+                .show();
+            SSUhoverMenu.reset();
+        }
+        else {
+            jQuery("body").removeClass("mobileBrowsing");
+            var width = jQuery(window).width() - 1200;
+            if(width > 450) {
+                width = 450;
+            }
+            if (width < this.standardSidebarWidth) {
+                width = this.standardSidebarWidth;
+            }
+            jQuery("#Sidebar").width(width+"px").show();
+            SSUhoverMenu.reset();
+        }
+    },
+
+    randomImageClick: function() {
         if(jQuery("#RandomVisualThought").length > 0) {
             jQuery("#RandomVisualThought").click(
                 function(el) {
@@ -133,7 +91,6 @@ var windowResizer = {
 
                                 }
                             );
-                        windowResizer.resizeImage();
                         jQuery(document).keydown(
                             function(e) {
                                 if(jQuery('#RandomImageLarge').length) {
@@ -144,83 +101,6 @@ var windowResizer = {
                     }
                 }
             );
-        }
-        //redo when window is resized
-        jQuery(window).resize(
-            function() {
-                windowResizer.manageSidebar();
-                if(jQuery("#RandomImageLarge").length) {
-                    windowResizer.resizeImage();
-                }
-            }
-        );
-    },
-
-    resizeImage : function() {
-        //get window height
-        this.getWindowSizing();
-        //width within boundaries
-        if(1 == 2) {
-            if(this.windowWidth < this.minWrapperWidth) {
-                this.windowWidth = this.minWrapperWidth;
-            }
-            if(this.windowWidth > this.maxWrapperWidth) {
-                this.windowWidth = this.maxWrapperWidth;
-            }
-            //height within boundaries
-            if(this.windowHeight < this.minWrapperHeight) {
-                this.windowHeight = this.minWrapperHeight;
-            }
-            if(this.windowHeight > this.maxWrapperHeight) {
-                this.windowHeight = this.maxWrapperHeight;
-            }
-        }
-        var image = this.getImage();
-
-        // 2) Center image in the middle
-        this.imageWidth = 'auto';
-        this.imageHeight = this.windowHeight + 'px';
-        image.width(windowResizer.imageWidth).height(windowResizer.imageHeight);
-        if(jQuery(image).width() > jQuery(image).height()) {
-            if(jQuery(image).width() < this.windowWidth) {
-                this.imageWidth = this.windowWidth + 'px';
-                this.imageHeight = 'auto';
-                image.width(windowResizer.imageWidth).height(windowResizer.imageHeight);
-            }
-        }
-        if(jQuery(image).height() > this.windowHeight) {
-            var heightDifference = jQuery(image).height() - this.windowHeight;
-            jQuery(image).css("margin-top", "-"+Math.round(heightDifference / 2)+"px" )
-        }
-    },
-
-
-    getImage : function() {
-        return jQuery('#RandomImageLarge img');
-    },
-
-    standardSidebarWidth: 200,
-
-    manageSidebar: function(){
-        this.getWindowSizing();
-        if(this.windowWidth < this.smallScreenMaxSize) {
-            jQuery("body").addClass("mobileBrowsing");
-            jQuery("#Sidebar").width(jQuery("#LayoutHolder").width()+"px").show();
-            SSUhoverMenu.set_mobileBrowsing(true);
-            SSUhoverMenu.reset();
-        }
-        else {
-            jQuery("body").removeClass("mobileBrowsing");
-            var width = jQuery(window).width() - 1200;
-            if(width > 450) {
-                width = 450;
-            }
-            if (width < this.standardSidebarWidth) {
-                width = this.standardSidebarWidth;
-            }
-            jQuery("#Sidebar").width(width+"px").show();
-            SSUhoverMenu.set_mobileBrowsing(false);
-            SSUhoverMenu.reset();
         }
     },
 
@@ -261,6 +141,79 @@ var windowResizer = {
         n = Number(n);
         return n === 0 || !!(n && !(n%2));
     }
+}
+
+
+
+var SSUhoverMenu = {
+
+    init: function(){
+        jQuery(".menuButton").on(
+            "click",
+            function() {
+                jQuery("body").toggleClass("has-menu-overlay");
+                return false;
+            }
+        );
+    },
+    mobileBrowsing: true,
+    animateIn: {opacity: "1"},
+    animateOut: {opacity: "0.85"},
+
+    reset: function() {
+        jQuery("body").removeClass("has-menu-overlay");
+        jQuery("#Nav").show();
+        jQuery(".hasCSSHover").removeClass("hasCSSHover");
+        jQuery("#Nav li.level1").hoverIntent(
+            {
+                over: SSUhoverMenu.menuIn,  // function = onMouseOver callback (required)
+                timeout: 200,   // number = milliseconds delay before onMouseOut function call
+                out: SSUhoverMenu.menuOut  // function = onMouseOut callback (required)
+            }
+        );
+        jQuery("#Nav").hoverIntent(
+            {
+                over: function(){
+                    jQuery(this)
+                        .animate(SSUhoverMenu.animateIn)
+                        .addClass("menuIn")
+                        .removeClass("menuOut");
+                },  // function = onMouseOver callback (required)
+                timeout: 1500,   // number = milliseconds delay before onMouseOut function call
+                out: function(){
+                    jQuery(this)
+                        .animate(SSUhoverMenu.animateOut)
+                        .addClass("menuOut")
+                        .removeClass("menuIn");
+                }  // function = onMouseOut callback (required)
+            }
+        );
+        jQuery("#Nav").children("li").each(
+            function(i, el) {
+                var parentOffset = jQuery(el).offset();
+                var left = parentOffset.left;
+                var docWidth = jQuery(document).width();
+                if(left > (docWidth - 270)) {
+                    left = docWidth - 270;
+                }
+                leftString = left + "px";
+                jQuery(el).children("ul").animate({paddingLeft: leftString});
+            }
+        );
+        jQuery("#Nav")
+            .animate(SSUhoverMenu.animateOut)
+            .addClass("menuOut")
+            .removeClass("menuIn");
+    },
+
+    menuIn: function() {
+        jQuery(this).children("ul").slideDown()
+    },
+
+    menuOut: function() {
+        jQuery(this).children("ul").slideUp()
+    }
+
 }
 
 

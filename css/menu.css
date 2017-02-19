@@ -133,7 +133,7 @@
     display: none;
 }
 
-.hasMenuOverlay nav {
+.has-menu-overlay nav {
     display: block!important;
     z-index: 1;
 }
@@ -165,6 +165,48 @@
     filter: alpha(opacity=100);
  /* For IE8 and earlier */
 }
+
+
+
+
+.mobileBrowsing .menuButton {
+    /* Chrome, Safari, Opera */
+    -webkit-animation-name: menuButtonAnimationOut;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-timing-function: ease-out;
+    -webkit-animation-delay: 0s;
+    /* Standard syntax */
+    animation-name: menuButtonAnimationOut;
+    animation-duration: 0.2s;
+    animation-timing-function: ease-out;
+    animation-delay: 0s;
+    animation-delay: 0s;
+    left: 10px!important;
+}
+
+.mobileBrowsing.has-menu-overlay .menuButton {
+    /* Chrome, Safari, Opera */
+    -webkit-animation-name: menuButtonAnimation;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-timing-function: ease-out;
+    -webkit-animation-delay: 0s;
+    /* Standard syntax */
+    animation-name: menuButtonAnimation;
+    animation-duration: 0.2s;
+    animation-timing-function: ease-out;
+    animation-delay: 0s;
+    left: 35px!important;
+}
+
+
+
+.mobileBrowsing #Nav li.current li a,
+.mobileBrowsing #Nav li.section  li  a,
+.mobileBrowsing #Nav li.link  li  a {
+    text-align: right;
+}
+
+
 
 /* Chrome, Safari, Opera */
 @-webkit-keyframes menuButtonAnimation {
@@ -206,42 +248,4 @@
     100% { 35px;
         left: 10px!important;
     }
-}
-
-
-.mobileBrowsing .menuButton {
-    /* Chrome, Safari, Opera */
-    -webkit-animation-name: menuButtonAnimationOut;
-    -webkit-animation-duration: 1s;
-    -webkit-animation-timing-function: ease-out;
-    -webkit-animation-delay: 0s;
-    /* Standard syntax */
-    animation-name: menuButtonAnimationOut;
-    animation-duration: 0.2s;
-    animation-timing-function: ease-out;
-    animation-delay: 0s;
-    animation-delay: 0s;
-    left: 10px!important;
-}
-
-.mobileBrowsing.hasMenuOverlay .menuButton {
-    /* Chrome, Safari, Opera */
-    -webkit-animation-name: menuButtonAnimation;
-    -webkit-animation-duration: 1s;
-    -webkit-animation-timing-function: ease-out;
-    -webkit-animation-delay: 0s;
-    /* Standard syntax */
-    animation-name: menuButtonAnimation;
-    animation-duration: 0.2s;
-    animation-timing-function: ease-out;
-    animation-delay: 0s;
-    left: 35px!important;
-}
-
-
-
-.mobileBrowsing #Nav li.current li a,
-.mobileBrowsing #Nav li.section  li  a,
-.mobileBrowsing #Nav li.link  li  a {
-    text-align: right;
 }

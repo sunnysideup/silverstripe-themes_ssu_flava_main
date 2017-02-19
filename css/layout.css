@@ -1,17 +1,19 @@
 @import url(http://fonts.googleapis.com/css?family=Lato);
 
 @import url(http://fonts.googleapis.com/css?family=Voces);
-/* global fixes */
-#HiddenTextItems {
-    display: block;
-    font-size: 0px;
-    text-indent: -9999px;
-    line-height: 0;
-}
+
+/**
+ * global fixes
+ */
+
 
 .clear {
     clear: both;
 }
+
+/**
+ * outers and main bits
+ */
 
 body, html {
     min-height: 100%;
@@ -26,66 +28,7 @@ body {
     background-image: url("/themes/main/images/logo.gif");
 }
 
-body.mobileBrowsing {
-    background-position: right top;
-    background-repeat: no-repeat;
-    background-color: #ffcc1a;
-    background-image: url("/themes/main/images/mobile-webdesign.gif");
-    padding-top: 166px;
-}
 
-body.hasMenuOverlay {
-    padding-top: 0!important;
-}
-
-
-
-
-.hasMenuOverlay #Breadcrumbs {
-    display: none;
-}
-
-.hasMenuOverlay #LayoutHolder > * {
-    display: none;
-}
-.hasMenuOverlay nav {
-    position: relative;
-}
-.hasMenuOverlay #LayoutHolder  aside {
-    position: relative;
-    z-index: 1;
-    display: block;
-
-}
-
-
-body.hasMenuOverlay:after {
-    content: "";
-    display: block;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    background-color: white;
-    z-index: 0;
-    opacity: 0.9;
-    filter: alpha(opacity=90);
-}
-
-
-#Wrapper {
-}
-
-.mobileBrowsing #Wrapper {
-    background-color: #fff;
-}
-
-#Container {
-}
-
-#Nav {
-} /* see MENU.CSS spreadsheet */
 #Breadcrumbs {
     text-align: right;
     padding: 0;
@@ -94,66 +37,42 @@ body.hasMenuOverlay:after {
     font-size: 12px;
 }
 
-.mobileBrowsing #Breadcrumbs {
-    padding: 10px;
-    margin-left: 25px;
-}
 
-.mobileBrowsing h1#PageTitle {
-    padding-top: 0.5em!important;
-}
-
-#SidebarSection {
-    width: 20%;
-    float: right;
-    padding: 67px 20px 0 0;
-}
-
-#Layout, footer {
+#Layout,
+footer {
     padding: 67px 270px 50px 210px;
     max-width: 770px;
-}
-.mobileBrowsing #Layout, .mobileBrowsing footer {
-    max-width: 90000px;
-    padding-left: 0;
-    padding-right: 0;
-}
-
-body.mobileBrowsing #LayoutHolder, body.mobileBrowsing #Wrapper footer {
-    padding: 40px;
-}
-
-@media screen and (max-width: 480px) {
-    body.mobileBrowsing #LayoutHolder, body.mobileBrowsing #Wrapper footer {
-        padding: 20px;
-    }
-}
-
-@media screen and (max-width: 380px) {
-    body.mobileBrowsing #LayoutHolder, body.mobileBrowsing #Wrapper footer {
-        padding: 10px;
-    }
 }
 
 #Layout footer {
     padding: 67px 0 50px 0;
 }
 
-.mobileBrowsing #Layout, .mobileBrowsing footer {
-    padding-right: 0px;
-    padding-left: 0px;
-    padding-top: 0px;
-}
+
+/**
+ * headings
+ *
+ */
 
 .pageTitle {
     text-transform: uppercase;
 }
 
-#shareThisUL {
-    position: absolute;
-    right: 12px;
-    top: 12px;
-}
+
+
+/**
+ * side bar
+ *
+ */
+
+
+
+
+ #SidebarSection {
+     width: 20%;
+     float: right;
+     padding: 67px 20px 0 0;
+ }
 
 #Sidebar {
     position: absolute;
@@ -261,71 +180,10 @@ body.mobileBrowsing #LayoutHolder, body.mobileBrowsing #Wrapper footer {
 #SidebarChildren li a:hover, #SidebarSiblings li a:hover {
 }
 
+/**
+ * side bar form
+ */
 
-.mobileBrowsing #Layout #Sidebar {
-    position: relative!important;
-    right: auto!important;
-    top: auto!important;
-    width: auto!important;
-    margin-bottom: 10px!important;
-}
-
-.mobileBrowsing #Layout .sidebarTop {
-    height: auto!important;
-    cursor: pointer!important;
-}
-
-.mobileBrowsing #Layout .sidebarTop a {
-    padding: 0.5em;
-    text-align: center;
-}
-
-#PageComments_holder {
-    margin-top: 40px;
-    font-size: 0.8em;
-}
-
-#PageComments_holder p.comment {
-    margin: 0px;
-    padding: 0px;
-    font-style: italic;
-    line-height: 0.9;
-}
-
-#PageComments_holder p.info {
-    margin: 0px;
-    padding: 0px;
-    font-size: 10px;
-    font-weight: bold;
-}
-
-ul#PageComments>li {
-    list-style-image: url("/themes/main/images/comment.png");
-}
-
-footer {
-    clear: both;
-    padding-top: 300px;
-}
-
-.backToTop {
-    float: right;
-    padding-bottom: 10px;
-    font-size: 10px;
-}
-
-.backToTop a {
-    text-decoration: none!important;
-}
-
-#CopyrightMessage {
-    border-top: 1px solid #cfd4d4;
-    clear: right;
-}
-
-#CopyrightMessage p {
-    font-size: 10px;
-}
 
 .sidebarBox form {
     margin: 0px!important;
@@ -341,7 +199,44 @@ footer {
 }
 
 
-.resultsBar, .pageNumbers, .filterSortDisplayAndSearch {
+/**
+ * footer
+ */
+
+
+
+ footer {
+     clear: both;
+     padding-top: 300px;
+ }
+
+ .backToTop {
+     float: right;
+     padding-bottom: 10px;
+     font-size: 10px;
+ }
+
+ .backToTop a {
+     text-decoration: none!important;
+ }
+
+ #CopyrightMessage {
+     border-top: 1px solid #cfd4d4;
+     clear: right;
+ }
+
+ #CopyrightMessage p {
+     font-size: 10px;
+ }
+
+
+/**
+ * lists and pagination
+ */
+
+.resultsBar,
+.pageNumbers,
+.filterSortDisplayAndSearch {
     font-size: 12px;
     background-color: #f2f2f2;
     /* gradient */
@@ -357,9 +252,10 @@ footer {
     padding-right: 30px;
 }
 
-.pageNumbers {
-}
-/***************************** START RANDOM IMAGE ******************/
+/**
+ * has random image
+ */
+
 #RandomVisualThoughtExplanation {
     position: absolute;
     bottom: 0;
@@ -379,6 +275,7 @@ footer {
     right: 10px;
     border: 1px solid #fff;
 }
+
 #RandomImage {
     cursor: pointer;
 }
@@ -410,6 +307,14 @@ footer {
     cursor: pointer;
 }
 
+
+/**
+ * has-random-image
+ */
+
+body.has-random-image #Wrapper {
+    padding-bottom: 1200px;
+}
 
 body.has-random-image #RandomVisualThoughtExplanation,
 body.has-random-image #RandomVisualThoughtHeader {
@@ -446,6 +351,12 @@ body.has-random-image #RandomVisualThought {
     height: 92px;
 }
 
+
+/**
+ * has-random-image, mobile-browsing
+ */
+
+
 body.has-random-image.mobileBrowsing #RandomImageLarge {
     top: 166px;
 }
@@ -456,8 +367,6 @@ body.has-random-image.mobileBrowsing .mainSection {
     margin-left: 0;
 }
 
-body.has-random-image.mobileBrowsing {
-}
 
 body.has-random-image.mobileBrowsing #RandomVisualThought {
     display: none;
@@ -468,11 +377,117 @@ body.has-random-image.mobileBrowsing #Wrapper {
 }
 
 
-/***************************** END RANDOM IMAGE ******************/
+
+/**
+ * menu overlay
+ */
+
+.has-menu-overlay {
+     padding-top: 0!important;
+ }
 
 
-/***************************** COLORBOX ******************/
+.has-menu-overlay #Breadcrumbs {
+    display: none;
+}
 
-#cboxClose {
-    border: none!important
+.has-menu-overlay #LayoutHolder > * {
+    display: none;
+}
+.has-menu-overlay nav {
+    position: relative;
+}
+.has-menu-overlay #LayoutHolder  aside {
+    position: relative;
+    z-index: 1;
+    display: block;
+
+}
+
+
+body.has-menu-overlay:after {
+    content: "";
+    display: block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: white;
+    z-index: 0;
+    opacity: 0.9;
+    filter: alpha(opacity=90);
+}
+
+
+/**
+ * mobile browsing
+ */
+
+body.mobileBrowsing {
+    background-position: right top;
+    background-repeat: no-repeat;
+    background-color: #ffcc1a;
+    background-image: url("/themes/main/images/mobile-webdesign.gif");
+    padding-top: 166px;
+}
+
+.mobileBrowsing #Wrapper {
+    background-color: #fff;
+}
+
+.mobileBrowsing #Layout,
+.mobileBrowsing footer {
+    max-width: none;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0px;
+}
+
+
+.mobileBrowsing #Breadcrumbs {
+    padding: 10px;
+    margin-left: 25px;
+}
+
+
+.mobileBrowsing h1#PageTitle {
+    padding-top: 0.5em!important;
+}
+
+body.mobileBrowsing #LayoutHolder,
+body.mobileBrowsing #Wrapper footer {
+    padding: 40px;
+}
+
+
+@media screen and (max-width: 480px) {
+    body.mobileBrowsing #LayoutHolder, body.mobileBrowsing #Wrapper footer {
+        padding: 20px;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    body.mobileBrowsing #LayoutHolder, body.mobileBrowsing #Wrapper footer {
+        padding: 10px;
+    }
+}
+
+
+.mobileBrowsing #Layout #Sidebar {
+    position: relative!important;
+    right: auto!important;
+    top: auto!important;
+    width: auto!important;
+    margin-bottom: 10px!important;
+}
+
+.mobileBrowsing #Layout .sidebarTop {
+    height: auto!important;
+    cursor: pointer!important;
+}
+
+.mobileBrowsing #Layout .sidebarTop a {
+    padding: 0.5em;
+    text-align: center;
 }
