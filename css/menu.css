@@ -84,7 +84,6 @@
 }
 
 @media screen and (max-width: 960px) {
-
     #Nav,  #Nav ul,  #Nav ul ul {
         position: relative!important;
         margin-left: 0px;
@@ -129,9 +128,6 @@
         padding: 0!important;
     }
 
-    #Nav {
-        margin-bottom: 30px;
-    }
 
     nav {
         display: none;
@@ -146,6 +142,7 @@
         overflow: auto;
         background-color: #808383;
         z-index: 3;
+
     }
 
     .has-menu-overlay nav {
