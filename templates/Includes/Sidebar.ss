@@ -40,11 +40,11 @@
         <li><a href="http://www.upgradesilverstripe.com/">upgradesilverstripe.com</a>: help with upgrading your silverstripe sites; and</li>
         <li><a href="http://www.silverstripe-webdevelopment.com/">silverstripe-webdevelopment.com</a>: notes for developers.</li>
     </ul>
+    <% if RandomImage %>
     <h3 id="RandomVisualThoughtHeader">Looking for more?</h3>
-<% if RandomImage %>
+    <div id="RandomVisualThought" style="background-image: url($RandomImage);" rel="$RandomImage"></div>
     <p id="RandomVisualThoughtExplanation">
         Prefer dark web / hipster / random?
     <p>
-    <div id="RandomVisualThought" style="background-image: url($RandomImage);" rel="$RandomImage"></div>
 <% end_if %>
 </div>

@@ -1,5 +1,3 @@
-;
-jQuery("#Sidebar, #nav").hide();
 
 (function($) {
     jQuery(document).ready(
@@ -34,27 +32,29 @@ var windowResizer = {
     init : function() {
         windowResizer.manageSidebar();
         windowResizer.randomImageClick();
+        windowResizer.menuButton();
         //redo when window is resized
-        jQuery(window).resize(
+    },
+
+    menuButton:function(){
+        jQuery(".menuButton").on(
+            "click",
             function() {
-                windowResizer.manageSidebar();
+                jQuery("body").toggleClass("has-menu-overlay");
+                return false;
             }
         );
     },
 
-
     manageSidebar: function(){
         this.getWindowSizing();
+        //in mobile, set the width of the sidebar the same as the layout holder
         if(this.windowWidth < this.smallScreenMaxSize) {
-            jQuery("body").addClass("mobileBrowsing");
             var layoutHolderWidth = jQuery("#LayoutHolder").width();
-            jQuery("#Sidebar")
-                .width( layoutHolderWidth+"px" )
-                .show();
-            SSUhoverMenu.reset();
+            jQuery("#Sidebar").width( layoutHolderWidth+"px" );
         }
+        //otherwise, set the width between 200 and 450
         else {
-            jQuery("body").removeClass("mobileBrowsing");
             var width = jQuery(window).width() - 1200;
             if(width > 450) {
                 width = 450;
@@ -62,43 +62,43 @@ var windowResizer = {
             if (width < this.standardSidebarWidth) {
                 width = this.standardSidebarWidth;
             }
-            jQuery("#Sidebar").width(width+"px").show();
-            SSUhoverMenu.reset();
+            jQuery("#Sidebar").width(width+"px");
         }
+        jQuery(window).resize(
+            function() {
+                window.clearTimeout(windowResizer.t);
+                windowResizer.t = window.setTimeout(
+                    function() {
+                        windowResizer.manageSidebar(),
+                        500
+                    }
+                )
+            }
+        );
     },
 
     randomImageClick: function() {
         if(jQuery("#RandomVisualThought").length > 0) {
+            jQuery("#RandomVisualThought").unbind('click');
             jQuery("#RandomVisualThought").click(
-                function(el) {
+                function(event) {
+                    event.preventDefault();
                     if(jQuery('#RandomImageLarge').length > 0) {
-                        jQuery('#RandomImageLarge').click();
+                        jQuery('#RandomImageLarge').remove();
+                        jQuery('body').removeClass('has-random-image');
+                        jQuery('#RandomVisualThoughtHeader').after(jQuery('#RandomVisualThought'));
+
                     } else {
                         var url = jQuery(this).attr("rel");
                         jQuery("body")
                             .prepend('<div id="RandomImageLarge" style="background-image: url('+url+'); background-size: cover;"></div>');
+                        jQuery("body").removeClass("has-menu-overlay");
                         jQuery('#RandomImageLarge').css('zIndex', 999);
+                        jQuery('#RandomVisualThought').appendTo('body');
                         windowResizer.imageflicker('#RandomImageLarge', 0);
 
-                        jQuery("#RandomImageLarge")
-                            //.css('background-image', 'url('+url+')')
-                            .click(
-                                function(){
-                                    jQuery(this).remove();
-                                    jQuery(document).removeAttr("keydown");
-                                    jQuery('body').removeClass('has-random-image');
-
-
-                                }
-                            );
-                        jQuery(document).keydown(
-                            function(e) {
-                                if(jQuery('#RandomImageLarge').length) {
-                                    if (e.which == 27) {jQuery('#RandomImageLarge').click(); }  // esc   (does not work)
-                                }
-                            }
-                        );
                     }
+                    return false;
                 }
             );
         }
@@ -120,10 +120,10 @@ var windowResizer = {
         } else {
             jQuery(selector).show();
         }
-        if(count < 14) {
-            var wait = Math.floor(Math.random() * 100);
-            if(count === 13) {
-                wait = 700;
+        if(count < 22) {
+            var wait = Math.floor(Math.random() * 60);
+            if(count == 21) {
+                wait = 777;
             }
             window.setTimeout(
                 function() {windowResizer.imageflicker(selector, count);},
@@ -148,22 +148,16 @@ var windowResizer = {
 var SSUhoverMenu = {
 
     init: function(){
-        jQuery(".menuButton").on(
-            "click",
-            function() {
-                jQuery("body").toggleClass("has-menu-overlay");
-                return false;
-            }
-        );
+        this.reset();
     },
     mobileBrowsing: true,
     animateIn: {opacity: "1"},
     animateOut: {opacity: "0.85"},
 
     reset: function() {
-        jQuery("body").removeClass("has-menu-overlay");
-        jQuery("#Nav").show();
-        jQuery(".hasCSSHover").removeClass("hasCSSHover");
+        // jQuery("body").removeClass("has-menu-overlay");
+        // jQuery("#Nav").show();
+        // jQuery(".hasCSSHover").removeClass("hasCSSHover");
         jQuery("#Nav li.level1").hoverIntent(
             {
                 over: SSUhoverMenu.menuIn,  // function = onMouseOver callback (required)

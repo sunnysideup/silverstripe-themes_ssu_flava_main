@@ -15,6 +15,7 @@
  * outers and main bits
  */
 
+
 body, html {
     min-height: 100%;
 }
@@ -27,7 +28,6 @@ body {
     background-color: #fff;
     background-image: url("/themes/main/images/logo.gif");
 }
-
 
 #Breadcrumbs {
     text-align: right;
@@ -76,17 +76,16 @@ footer {
 
 #Sidebar {
     position: absolute;
-    top: 20px;
+    top: 47px;
     right: 20px;
     width: 200px;
     padding: 12px;
-    padding-bottom: 60px;
     background-color: #f2f2f2;
     border: 0px solid #fff;
     -webkit-border-bottom-right-radius: 5px;
     border-bottom-right-radius: 5px;
     -moz-border-radius-bottomright: 5px;
-    border-top: 18px solid #808383;
+    border-top: 2px solid #808383;
     border-bottom: 1px solid #ccc;
 }
 
@@ -253,27 +252,21 @@ footer {
 }
 
 /**
- * has random image
+ * has  image
  */
 
 #RandomVisualThoughtExplanation {
-    position: absolute;
-    bottom: 0;
-    left: 10px;
-    right: 80px;
+    margin-right: 80px;
 }
 #RandomVisualThought {
+    float: right;
     background-size: cover;
     width: 64px;
     height: 64px;
-    margin-right: auto;
-    margin-left: auto;
     border-radius: 50px;
-    opacity: 0.77;
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
     border: 1px solid #fff;
+    opacity: 0.77;
+    margin-top: -30px;
 }
 
 #RandomImage {
@@ -313,7 +306,8 @@ footer {
  */
 
 body.has-random-image #Wrapper {
-    padding-bottom: 1200px;
+    position: relative;
+    padding-bottom: 100vh;
 }
 
 body.has-random-image #RandomVisualThoughtExplanation,
@@ -323,20 +317,27 @@ body.has-random-image #RandomVisualThoughtHeader {
 body.has-random-image .mainSection {
     position: relative;
     z-index: 1;
-    opacity: 0.9;
+    opacity: 0.77;
     background-color: #030003;
     border: 20px solid #030003;
-    border-top: 47px solid #030003;
+    border-top: calc(47px - 2vh) solid #030003;
     margin-top: -47px;
     margin-left: -20px;
     border-radius: 0 0 20px 0;
 }
 
 body.has-random-image #Sidebar {
-    background-color: #030003;
-    opacity: 0.9;
-    border-top: 18px solid #070007;
-    border-bottom: 5px solid #070007;
+    position: absolute;!important;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: #fff;
+    opacity: 0.5;
+    border: none!important;
+    color: #000;
+}
+body.has-random-image #Sidebar a {
+    color: #000;
 }
 body.has-random-image #RandomVisualThought {
     position: fixed;
@@ -349,32 +350,15 @@ body.has-random-image #RandomVisualThought {
     background-image:url("/themes/main/images/mobile-webdesign.gif")!important;
     width: 150px;
     height: 92px;
-}
-
-
-/**
- * has-random-image, mobile-browsing
- */
-
-
-body.has-random-image.mobileBrowsing #RandomImageLarge {
-    top: 166px;
-}
-
-body.has-random-image.mobileBrowsing .mainSection {
-    border-top: none;
     margin-top: 0;
-    margin-left: 0;
+    cursor: pointer;
 }
 
 
-body.has-random-image.mobileBrowsing #RandomVisualThought {
+body.has-random-image footer {
     display: none;
 }
 
-body.has-random-image.mobileBrowsing #Wrapper {
-    background-color: transparent;
-}
 
 
 
@@ -382,27 +366,6 @@ body.has-random-image.mobileBrowsing #Wrapper {
  * menu overlay
  */
 
-.has-menu-overlay {
-     padding-top: 0!important;
- }
-
-
-.has-menu-overlay #Breadcrumbs {
-    display: none;
-}
-
-.has-menu-overlay #LayoutHolder > * {
-    display: none;
-}
-.has-menu-overlay nav {
-    position: relative;
-}
-.has-menu-overlay #LayoutHolder  aside {
-    position: relative;
-    z-index: 1;
-    display: block;
-
-}
 
 
 body.has-menu-overlay:after {
@@ -423,71 +386,103 @@ body.has-menu-overlay:after {
 /**
  * mobile browsing
  */
+@media screen and (max-width: 960px)  {
 
-body.mobileBrowsing {
-    background-position: right top;
-    background-repeat: no-repeat;
-    background-color: #ffcc1a;
-    background-image: url("/themes/main/images/mobile-webdesign.gif");
-    padding-top: 166px;
+    body.has-random-image #Wrapper {
+        background-color: transparent;
+    }
+
+
+    body.has-menu-overlay #RandomVisualThought {
+        position: fixed;
+        z-index: 12;
+        bottom: 12px;
+        left: 12px;
+        margin: 0!important;
+    }
+
+    body .mainSection {
+        padding-top: 20px;
+    }
+    body.has-random-image .mainSection {
+        border-top: none;
+        margin-top: 0;
+        margin-left: 0;
+        border-radius: 0;
+    }
+
+
+    body.has-random-image #RandomVisualThought {
+        display: none;
+    }
+
+
+    body {
+        background-color: #ffcc1a;
+    }
+
+     #Wrapper {
+        background-color: #fff;
+        background-image: url("/themes/main/images/mobile-webdesign-wide.gif")!important;
+        background-position: right top;
+        background-repeat: no-repeat;
+        padding-top: 166px;
+    }
+
+     #Layout,
+     footer {
+        max-width: none;
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 0px;
+    }
+
+
+     #Breadcrumbs {
+        padding: 10px;
+        margin-left: 25px;
+    }
+
+
+     h1#PageTitle {
+        padding-top: 0.5em!important;
+    }
+
+    body #LayoutHolder,
+    body #Wrapper footer {
+        padding: 40px;
+    }
+
+
+
+
+     #Layout #Sidebar {
+        position: relative!important;
+        right: auto!important;
+        top: auto!important;
+        width: auto!important;
+        margin-bottom: 10px!important;
+    }
+
+     #Layout .sidebarTop {
+        height: auto!important;
+        cursor: pointer!important;
+    }
+
+     #Layout .sidebarTop a {
+        padding: 0.5em;
+        text-align: center;
+    }
 }
-
-.mobileBrowsing #Wrapper {
-    background-color: #fff;
-}
-
-.mobileBrowsing #Layout,
-.mobileBrowsing footer {
-    max-width: none;
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 0px;
-}
-
-
-.mobileBrowsing #Breadcrumbs {
-    padding: 10px;
-    margin-left: 25px;
-}
-
-
-.mobileBrowsing h1#PageTitle {
-    padding-top: 0.5em!important;
-}
-
-body.mobileBrowsing #LayoutHolder,
-body.mobileBrowsing #Wrapper footer {
-    padding: 40px;
-}
-
 
 @media screen and (max-width: 480px) {
-    body.mobileBrowsing #LayoutHolder, body.mobileBrowsing #Wrapper footer {
+    body #LayoutHolder, body #Wrapper footer {
         padding: 20px;
     }
 }
 
 @media screen and (max-width: 380px) {
-    body.mobileBrowsing #LayoutHolder, body.mobileBrowsing #Wrapper footer {
+    body #LayoutHolder, body #Wrapper footer {
         padding: 10px;
     }
-}
-
-
-.mobileBrowsing #Layout #Sidebar {
-    position: relative!important;
-    right: auto!important;
-    top: auto!important;
-    width: auto!important;
-    margin-bottom: 10px!important;
-}
-
-.mobileBrowsing #Layout .sidebarTop {
-    height: auto!important;
-    cursor: pointer!important;
-}
-
-.mobileBrowsing #Layout .sidebarTop a {
-    padding: 0.5em;
-    text-align: center;
 }
