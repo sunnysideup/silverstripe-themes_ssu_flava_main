@@ -77,7 +77,7 @@ footer {
 #Sidebar {
     position: absolute;
     top: 12vh;
-    right: 20px;
+    right: 12vh;
     width: 200px;
     padding: 12px 20px;
     background-color: #f2f2f2;
@@ -395,7 +395,11 @@ body.has-menu-overlay:after {
 }
 
 
-
+@media screen and (max-width: 1700px)  {
+    #Sidebar {
+        right: 7vh;
+    }
+}
 
 /**
  * mobile browsing
@@ -417,7 +421,9 @@ body.has-menu-overlay:after {
 }
 
 @media screen and (max-width: 1300px)  {
-
+  #Sidebar {
+      right: 30px;
+  }
 
 }
 
@@ -427,6 +433,11 @@ body.has-menu-overlay:after {
     footer {
         padding: 12vh 310px 50px calc(153px + 7%);
     }
+
+    #Sidebar {
+        right: 20px;
+    }
+
 }
 
 
