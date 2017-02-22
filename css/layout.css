@@ -395,7 +395,11 @@ body.has-menu-overlay:after {
 }
 
 
-
+@media screen and (max-width: 1700px)  {
+    #Sidebar {
+        right: 7vh;
+    }
+}
 
 /**
  * mobile browsing
@@ -404,6 +408,9 @@ body.has-menu-overlay:after {
     #Layout,
     footer {
         padding: 12vh 310px 50px calc(133px + 7%);
+    }
+    body.has-menu-overlay #RandomVisualThought {
+        left: 20px;
     }
     body.has-random-image #RandomVisualThought {
         left: 30px;
@@ -415,6 +422,9 @@ body.has-menu-overlay:after {
 
 @media screen and (max-width: 1300px)  {
 
+  #Sidebar {
+      right: 30px;
+  }
 
 }
 
@@ -437,6 +447,7 @@ body.has-menu-overlay:after {
  * mobile browsing
  */
 @media screen and (max-width: 960px)  {
+
 
     body.has-random-image #Wrapper {
         background-color: transparent;
