@@ -40,7 +40,7 @@ body {
 
 #Layout,
 footer {
-    padding: 12vh 270px 50px calc(133px + 12%);
+    padding: 12vh 270px 50px calc(173px + 7%);
     max-width: 770px;
 }
 
@@ -332,7 +332,7 @@ body.has-random-image .mainSection {
 body.has-random-image #Sidebar {
     position: absolute;!important;
     top: 7vh;
-    right: 20px;
+    right: 7vh;
     background: #fff;
     opacity: 0.5;
     border: none!important;
@@ -351,7 +351,7 @@ body.has-random-image #Sidebar li {
 body.has-random-image #RandomVisualThought {
     position: fixed;
     top: 7vh;
-    left: 20px;
+    left: 7vh;
     bottom: auto;
     right: auto;
     border-radius: 0;
@@ -392,6 +392,41 @@ body.has-menu-overlay:after {
     z-index: 0;
     opacity: 0.9;
     filter: alpha(opacity=90);
+}
+
+
+
+
+/**
+ * mobile browsing
+ */
+@media screen and (max-width: 1400px)  {
+    #Layout,
+    footer {
+        padding: 12vh 310px 50px calc(133px + 7%);
+    }
+    body.has-menu-overlay #RandomVisualThought {
+        left: 20px;
+    }
+    body.has-random-image #RandomVisualThought {
+        left: 30px;
+    }
+    body.has-random-image #Sidebar{
+        right: 30px;
+    }
+}
+
+@media screen and (max-width: 1300px)  {
+
+
+}
+
+@media screen and (max-width: 1100px)  {
+
+    #Layout,
+    footer {
+        padding: 12vh 310px 50px calc(153px + 7%);
+    }
 }
 
 
@@ -442,6 +477,7 @@ body.has-menu-overlay:after {
     }
 
      #Layout,
+     body.has-random-image #Layout,
      footer {
         max-width: none;
         padding-left: 0;
