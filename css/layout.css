@@ -421,6 +421,7 @@ body.has-menu-overlay:after {
 }
 
 @media screen and (max-width: 1300px)  {
+
   #Sidebar {
       right: 30px;
   }
@@ -433,11 +434,12 @@ body.has-menu-overlay:after {
     footer {
         padding: 12vh 310px 50px calc(153px + 7%);
     }
-
-    #Sidebar {
+    body.has-random-image #RandomVisualThought {
+        left: 20px;
+    }
+    body.has-random-image #Sidebar{
         right: 20px;
     }
-
 }
 
 
@@ -445,10 +447,6 @@ body.has-menu-overlay:after {
  * mobile browsing
  */
 @media screen and (max-width: 960px)  {
-
-    body.has-random-image #Sidebar {
-        right: 20px;
-    }
 
 
     body.has-random-image #Wrapper {
