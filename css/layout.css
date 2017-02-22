@@ -334,7 +334,7 @@ body.has-random-image #Sidebar {
     top: 7vh;
     right: 7vh;
     background: #fff;
-    opacity: 0.5;
+    opacity: 0.77;
     border: none!important;
     color: #000;
 }
@@ -434,6 +434,11 @@ body.has-menu-overlay:after {
  * mobile browsing
  */
 @media screen and (max-width: 960px)  {
+
+    body.has-random-image #Sidebar {
+        right: 20px;
+    }
+
 
     body.has-random-image #Wrapper {
         background-color: transparent;
