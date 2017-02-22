@@ -40,7 +40,7 @@ body {
 
 #Layout,
 footer {
-    padding: 67px 270px 50px 210px;
+    padding: 12vh 270px 50px calc(133px + 12%);
     max-width: 770px;
 }
 
@@ -76,10 +76,10 @@ footer {
 
 #Sidebar {
     position: absolute;
-    top: 47px;
+    top: 12vh;
     right: 20px;
     width: 200px;
-    padding: 12px;
+    padding: 12px 20px;
     background-color: #f2f2f2;
     border: 0px solid #fff;
     -webkit-border-bottom-right-radius: 5px;
@@ -267,6 +267,7 @@ footer {
     border: 1px solid #fff;
     opacity: 0.77;
     margin-top: -30px;
+    margin-right: -10px;
 }
 
 #RandomImage {
@@ -305,6 +306,9 @@ footer {
  * has-random-image
  */
 
+body.has-random-image #Layout {
+    padding-top: 7vh;
+}
 body.has-random-image #Wrapper {
     position: relative;
     padding-bottom: 100vh;
@@ -321,27 +325,32 @@ body.has-random-image .mainSection {
     background-color: #030003;
     border: 20px solid #030003;
     border-top: calc(47px - 2vh) solid #030003;
-    margin-top: -47px;
-    margin-left: -20px;
+    margin-top: 0px;
     border-radius: 0 0 20px 0;
 }
 
 body.has-random-image #Sidebar {
     position: absolute;!important;
-    top: 0;
-    bottom: 0;
-    right: 0;
+    top: 7vh;
+    right: 20px;
     background: #fff;
     opacity: 0.5;
     border: none!important;
     color: #000;
 }
-body.has-random-image #Sidebar a {
-    color: #000;
+body.has-random-image #Sidebar .sidebarBox {
+    /*position: absolute;!important;
+    bottom: 12vh;*/
 }
+body.has-random-image #Sidebar a,
+body.has-random-image #Sidebar p,
+body.has-random-image #Sidebar li {
+    color: #333;
+}
+
 body.has-random-image #RandomVisualThought {
     position: fixed;
-    top: 20px;
+    top: 7vh;
     left: 20px;
     bottom: auto;
     right: auto;
@@ -359,6 +368,9 @@ body.has-random-image footer {
     display: none;
 }
 
+body.has-random-image .sidebarBox {
+
+}
 
 
 

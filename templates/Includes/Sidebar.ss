@@ -41,7 +41,7 @@
         <li><a href="http://www.silverstripe-webdevelopment.com/">silverstripe-webdevelopment.com</a>: notes for developers.</li>
     </ul>
     <% if RandomImage %>
-    <h3 id="RandomVisualThoughtHeader">Looking for more?</h3>
+    <h3 id="RandomVisualThoughtHeader">Change Management</h3>
     <div id="RandomVisualThought" style="background-image: url($RandomImage);" rel="$RandomImage"></div>
     <p id="RandomVisualThoughtExplanation">
         Prefer dark web / hipster / random?
