@@ -46,3 +46,6 @@ list-style-image: url("/themes/main/images/comment.png");
 #cboxClose {
     border: none!important
 }
+
+
+.pp_description {display: none!important;}

@@ -168,15 +168,16 @@ footer {
     line-height: 1;
 }
 
-#SidebarChildren li a, #SidebarSiblings li a {
-    display: inline;
+#SidebarChildren li,
+#SidebarSiblings li {
     padding-left: 0.2em;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-    text-decoration: underline;
+    padding-top: 1em;
+    padding-bottom: 1em;
 }
 
-#SidebarChildren li a:hover, #SidebarSiblings li a:hover {
+#SidebarChildren li a:hover,
+#SidebarSiblings li a:hover {
+    background-color: #ffcc1a;
 }
 
 /**
@@ -335,8 +336,8 @@ body.has-random-image #Sidebar {
     right: 7vh;
     background: #fff;
     opacity: 0.77;
-    border: none!important;
     color: #000;
+    border: none!important;
 }
 body.has-random-image #Sidebar .sidebarBox {
     /*position: absolute;!important;
