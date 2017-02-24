@@ -94,7 +94,6 @@ var windowResizer = {
                             .prepend('<div id="RandomImageLarge" style="background-image: url('+url+'); background-size: cover;"></div>');
                         jQuery("body").removeClass("has-menu-overlay");
                         jQuery('#RandomImageLarge').css('zIndex', 999);
-                        jQuery('#RandomVisualThought').appendTo('body');
                         windowResizer.imageflicker('#RandomImageLarge', 0);
 
                     }
@@ -132,6 +131,7 @@ var windowResizer = {
         }
         else {
             jQuery("body").addClass('has-random-image');
+            jQuery('#RandomVisualThought').appendTo('body');
             jQuery(selector).css('zIndex', 0);
             jQuery(selector).show();
         }
