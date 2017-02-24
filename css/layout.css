@@ -501,7 +501,8 @@ body.has-menu-overlay:after {
 
      #Breadcrumbs {
         padding: 10px;
-        margin-left: 25px;
+        margin-left: 35px;
+        top: 170px;
     }
 
 
@@ -540,10 +541,17 @@ body.has-menu-overlay:after {
     body #LayoutHolder, body #Wrapper footer {
         padding: 20px;
     }
+    #Breadcrumbs {
+       margin-left: 15px;
+   }
 }
 
 @media screen and (max-width: 380px) {
     body #LayoutHolder, body #Wrapper footer {
         padding: 10px;
     }
+    #Breadcrumbs {
+       margin-left: 5px;
+       top: 160px;
+   }
 }

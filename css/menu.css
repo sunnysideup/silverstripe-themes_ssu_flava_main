@@ -152,8 +152,8 @@
 
     .menuButton {
         position: absolute;
-        top: 15px;
-        left: 10px;
+        top: 25px;
+        left: 25px;
         margin-top: 0;
         display: block;
         /*do forgert to change # for %23 */
@@ -189,7 +189,7 @@
         animation-duration: 0.2s;
         animation-timing-function: ease-out;
         animation-delay: 0s;
-        left: 10px!important;
+        left: 25px!important;
     }
 
     .has-menu-overlay .menuButton {
@@ -217,7 +217,7 @@
 /* Chrome, Safari, Opera */
 @-webkit-keyframes menuButtonAnimation {
     0% {
-        left: 10px;
+        left: 25px;
     }
 
     100% {
@@ -228,7 +228,7 @@
 /* Standard syntax */
 @keyframes menuButtonAnimation {
     0% {
-        left: 10px;
+        left: 25px;
     }
 
     100% {
@@ -243,7 +243,7 @@
     }
 
     100% {
-        left: 10px!important;
+        left: 25px!important;
     }
 }
 
@@ -254,6 +254,6 @@
     }
 
     100% {
-        left: 10px!important;
+        left: 25px!important;
     }
 }
