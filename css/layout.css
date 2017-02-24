@@ -258,6 +258,7 @@ footer {
 
 #RandomVisualThoughtExplanation {
     margin-right: 80px;
+    padding-bottom: 30px;
 }
 #RandomVisualThought {
     float: right;
@@ -267,7 +268,7 @@ footer {
     border-radius: 50px;
     border: 1px solid #fff;
     opacity: 0.77;
-    margin-top: -30px;
+    margin-top: 10px;
     margin-right: -10px;
 }
 
