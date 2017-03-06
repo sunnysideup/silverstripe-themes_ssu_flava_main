@@ -1,17 +1,18 @@
 
 <% if $Siblings || $MenuChildren %>
 <div class="sidebarBox" id="SidebarChildren">
-<% if Siblings %>
-    <h3>For Also See Peeps</h3>
-    <% if Parent %>
+<% if $Siblings %>
+    <h3>Also See</h3>
+    <% if $Parent %>
     <p class="parentPageInfo">Other pages in the <% with Parent %><a href="$Link">$Title</a><% end_with %> section.</p>
     <% end_if %>
     <ul>
         <% loop Siblings %><li class="$FirstLast $LinkingMode"><a href="$Link">$MenuTitle</a></li><% end_loop %>
     </ul>
 <% end_if %>
-<% if MenuChildren %>
-    <h3>For <strong>$MenuTitle</strong> enthusiasts</h3>
+<% if $MenuChildren %>
+    <h3>More Details</h3>
+    <p>In the <strong>$MenuTitle</strong> Section:</p>
     <ul>
         <% loop MenuChildren %><li class="$FirstLast $LinkingMode"><a href="$Link">$MenuTitle</a></li><% end_loop %>
     </ul>
