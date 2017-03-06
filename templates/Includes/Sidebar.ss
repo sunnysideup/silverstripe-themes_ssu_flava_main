@@ -31,7 +31,7 @@
 <div class="sidebarBox" id="RandomImage">
     <h3>For Developers</h3>
     <p>
-        The sites listed below may be of interest to web developers and Silverstripe enthusiasts.
+        The sites listed below may be of interest to web developers and Silverstripe enthusiasts:
     </p>
     <ul>
         <li><a href="http://www.silverstripe-ecommerce.com/">silverstripe-ecommerce.com</a>: our e-commerce demo;</li>
