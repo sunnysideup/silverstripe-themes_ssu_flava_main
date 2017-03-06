@@ -30,9 +30,6 @@
 
 <div class="sidebarBox" id="RandomImage">
     <h3>For Developers</h3>
-    <p>
-        Sunny Side Up has a few small sites - each with its own audience:
-    </p>
     <ul>
         <li><a href="http://www.silverstripe-ecommerce.com/">silverstripe-ecommerce.com</a>: our e-commerce demo;</li>
         <li><a href="http://www.ssmods.com/">ssmods.com</a>: find the world's best Silverstripe themes and modules;</li>
