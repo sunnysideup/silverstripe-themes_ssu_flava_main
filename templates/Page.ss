@@ -30,7 +30,7 @@
         <% include Breadcrumbs %>
         <div id="PageSpecificHolder">$Layout</div>
         <footer class="typography">
-            <span class="backToTop"><a href="#Wrapper">back to top</a></span>
+            <p class="backToTop"><a href="#Wrapper">back to top</a></p>
             <div id="CopyrightMessage">$SiteConfig.CopyrightNotice</div>
         </footer>
     </div>
