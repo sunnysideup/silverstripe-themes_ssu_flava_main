@@ -30,7 +30,6 @@ var windowResizer = {
     standardSidebarWidth: 200,
 
     init : function() {
-        windowResizer.manageSidebar();
         windowResizer.randomImageClick();
         windowResizer.menuButton();
         //redo when window is resized
@@ -42,37 +41,6 @@ var windowResizer = {
             function() {
                 jQuery("body").toggleClass("has-menu-overlay");
                 return false;
-            }
-        );
-    },
-
-    manageSidebar: function(){
-        this.getWindowSizing();
-        //in mobile, set the width of the sidebar the same as the layout holder
-        if(this.windowWidth < this.smallScreenMaxSize) {
-            var layoutHolderWidth = jQuery("#LayoutHolder").width();
-            jQuery("#Sidebar").width( layoutHolderWidth+"px" );
-        }
-        //otherwise, set the width between 200 and 450
-        else {
-            var width = jQuery(window).width() - 1200;
-            if(width > 450) {
-                width = 450;
-            }
-            if (width < this.standardSidebarWidth) {
-                width = this.standardSidebarWidth;
-            }
-            jQuery("#Sidebar").width(width+"px");
-        }
-        jQuery(window).resize(
-            function() {
-                window.clearTimeout(windowResizer.t);
-                windowResizer.t = window.setTimeout(
-                    function() {
-                        windowResizer.manageSidebar(),
-                        500
-                    }
-                )
             }
         );
     },
@@ -94,6 +62,8 @@ var windowResizer = {
                             .prepend('<div id="RandomImageLarge" style="background-image: url('+url+'); background-size: cover;"></div>');
                         jQuery("body").removeClass("has-menu-overlay");
                         jQuery('#RandomImageLarge').css('zIndex', 999);
+                        jQuery("body")
+                            .addClass('transition-to-has-random-image');
                         windowResizer.imageflicker('#RandomImageLarge', 0);
 
                     }
@@ -119,21 +89,20 @@ var windowResizer = {
         } else {
             jQuery(selector).show();
         }
-        if(count < 22) {
+        if(count < 28) {
             var wait = Math.floor(Math.random() * 60);
-            if(count == 21) {
-                wait = 777;
-            }
             window.setTimeout(
                 function() {windowResizer.imageflicker(selector, count);},
                 wait
             );
         }
         else {
-            jQuery("body").addClass('has-random-image');
             jQuery('#RandomVisualThought').appendTo('body');
             jQuery(selector).css('zIndex', 0);
             jQuery(selector).show();
+            jQuery("body")
+                .addClass('has-random-image')
+                .removeClass('transition-to-has-random-image');
         }
     },
 

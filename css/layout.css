@@ -5,7 +5,12 @@
 /**
  * global fixes
  */
-
+/**
+ * sidbar left: 210px fixed width:
+ * 170 vertical logo + 60 padding right = 230 / RandomImage: 40 + 152 + 40 = 232
+ *
+ *
+ */
 
 .clear {
     clear: both;
@@ -29,34 +34,43 @@ body {
     background-image: url("/themes/main/images/logo.gif");
 }
 
-#Breadcrumbs {
-    text-align: right;
-    padding: 0;
-    position: absolute;
-    top: 20px;
-    font-size: 12px;
-}
-
-
-#Layout,
-footer {
-    padding: 12vh 270px 50px calc(173px + 7%);
-    max-width: 770px;
-}
-
-#Layout footer {
-    padding: 67px 0 50px 0;
+body #Wrapper {
+    position: relative;
 }
 
 
 /**
- * headings
- *
+ * main items position!
  */
 
-.pageTitle {
-    text-transform: uppercase;
+
+
+#Layout {
+    padding: 12vh 5% 12vh calc(170px + 5%);
 }
+
+
+#PageSpecificHolder .main-section.with-sidebar {
+    width: calc(70% - 5%);
+    float: left;
+}
+
+#PageSpecificHolder aside {
+    float: right;
+    width: 30%;
+}
+
+
+#Breadcrumbs {
+    position: absolute;
+    top: 2vh;
+}
+
+
+/**
+ * content sections
+ *
+ */
 
 
 
@@ -68,18 +82,7 @@ footer {
 
 
 
- #SidebarSection {
-     width: 20%;
-     float: right;
-     padding: 67px 20px 0 0;
- }
-
 #Sidebar {
-    position: absolute;
-    top: 12vh;
-    right: 12vh;
-    width: 200px;
-    padding: 12px 20px;
     background-color: #f2f2f2;
     border: 0px solid #fff;
     -webkit-border-bottom-right-radius: 5px;
@@ -88,6 +91,15 @@ footer {
     border-top: 2px solid #808383;
     border-bottom: 1px solid #ccc;
 }
+
+#Sidebar.content-padding,
+.has-random-image .content-padding {
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    padding-left: 2vw;
+    padding-right: 2vw;
+}
+
 
 #Sidebar .sidebarBox {
     padding: 10px 0px 0px!important;
@@ -145,7 +157,7 @@ footer {
     margin-left: 0px;
     padding-left: 0px;
     list-style-image: none;
-    line-height: 1;
+    line-height: 1.33;
 
 }
 #Sidebar ul li:before {
@@ -205,29 +217,36 @@ footer {
 
 
 
- footer {
-     clear: both;
-     padding-top: 300px;
- }
+footer {
+    clear: both;
+    padding-top: 12vh;
+}
 
- .backToTop {
-     float: right;
-     padding-bottom: 10px;
-     font-size: 10px;
- }
 
- .backToTop a {
-     text-decoration: none!important;
- }
+.backToTop {
+    float: right;
+    background-image:  url(
+        "data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1' x='0px' y='0px' viewBox='0 0 1000 1000' enable-background='new 0 0 1000 1000' xml:space='preserve'><metadata> Svg Vector Icons : http://www.onlinewebfonts.com/icon </metadata><g><path fill='%23cfd4d4' d='M886.1,515.6L534.2,163.7c-8.7-8.9-20.8-14.5-34.2-14.5c-13.6,0-25.9,5.7-34.6,14.9L113.9,515.6l0,0c-8.6,8.6-13.9,20.5-13.9,33.7c0,26.4,21.4,47.8,47.8,47.8c13.6,0,25.8-5.7,34.5-14.7l269.3-269.3v629.3c0,0,0,0,0,0c0,26.3,21.3,47.6,47.6,47.6c26.3,0,47.6-21.3,47.6-47.6V311.6l271.6,271.6l0.1-0.1c8.6,8.6,20.6,13.9,33.7,13.9c26.4,0,47.8-21.4,47.8-47.8C900,536.2,894.7,524.3,886.1,515.6L886.1,515.6z'/></g></svg>"
+    );
+    background-repeat: no-repeat;
+    width:32px;
+    height: 32px;
+    display: block;
+}
+.backToTop a {
+    color: transparent!important;
+    border-bottom: none!important;
+}
 
- #CopyrightMessage {
-     border-top: 1px solid #cfd4d4;
-     clear: right;
- }
+footer *, #Breadcrumbs, #Breadcrumbs * {
+    font-size: 1vw!important;
+}
 
- #CopyrightMessage p {
-     font-size: 10px;
- }
+#CopyrightMessage {
+    border-top: 1px solid #cfd4d4;
+}
+
+
 
 
 /**
@@ -308,33 +327,40 @@ footer {
  * has-random-image
  */
 
+ body.transition-to-has-random-image #Wrapper {
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-image: none!important;
+ }
+ body.transition-to-has-random-image #Wrapper #Layout {
+     display: none;
+ }
+ body.has-random-image #Wrapper {
+     padding-bottom: 100vh;
+     overflow: hidden;
+ }
+
 body.has-random-image #Layout {
     padding-top: 7vh;
 }
-body.has-random-image #Wrapper {
-    position: relative;
-    padding-bottom: 100vh;
-}
+
 
 body.has-random-image #RandomVisualThoughtExplanation,
 body.has-random-image #RandomVisualThoughtHeader {
     display: none;
 }
-body.has-random-image .mainSection {
-    position: relative;
-    z-index: 1;
+body.has-random-image .main-section {
     opacity: 0.77;
     background-color: #030003;
-    border: 20px solid #030003;
-    border-top: calc(47px - 2vh) solid #030003;
-    margin-top: 0px;
     border-radius: 0 0 20px 0;
+    padding-top: 5vh;
 }
 
 body.has-random-image #Sidebar {
-    position: absolute;!important;
-    top: 7vh;
-    right: 7vh;
     background: #fff;
     opacity: 0.77;
     color: #000;
@@ -353,7 +379,7 @@ body.has-random-image #Sidebar li {
 body.has-random-image #RandomVisualThought {
     position: fixed;
     top: 7vh;
-    left: 7vh;
+    left: 40px;
     bottom: auto;
     right: auto;
     border-radius: 0;
@@ -370,9 +396,6 @@ body.has-random-image footer {
     display: none;
 }
 
-body.has-random-image .sidebarBox {
-
-}
 
 
 
@@ -397,49 +420,6 @@ body.has-menu-overlay:after {
 }
 
 
-@media screen and (max-width: 1700px)  {
-    #Sidebar {
-        right: 7vh;
-    }
-}
-
-/**
- * mobile browsing
- */
-@media screen and (max-width: 1400px)  {
-    #Layout,
-    footer {
-        padding: 12vh 310px 50px calc(133px + 7%);
-    }
-    body.has-random-image #RandomVisualThought {
-        left: 30px;
-    }
-    body.has-random-image #Sidebar{
-        right: 30px;
-    }
-}
-
-@media screen and (max-width: 1300px)  {
-
-  #Sidebar {
-      right: 30px;
-  }
-
-}
-
-@media screen and (max-width: 1100px)  {
-
-    #Layout,
-    footer {
-        padding: 12vh 310px 50px calc(153px + 7%);
-    }
-    body.has-random-image #RandomVisualThought {
-        left: 20px;
-    }
-    body.has-random-image #Sidebar{
-        right: 20px;
-    }
-}
 
 
 /**
@@ -448,81 +428,49 @@ body.has-menu-overlay:after {
 @media screen and (max-width: 960px)  {
 
 
-    body.has-random-image #Wrapper {
-        background-color: transparent;
-    }
-
-
-    body.has-menu-overlay #RandomVisualThought {
-        position: fixed;
-        z-index: 12;
-        bottom: 12px;
-        left: 12px;
-        margin: 0!important;
-    }
-
-    body .mainSection {
-        padding-top: 20px;
-    }
-    body.has-random-image .mainSection {
-        border-top: none;
-        margin-top: 0;
-        margin-left: 0;
-        border-radius: 0;
-    }
-
-
-    body.has-random-image #RandomVisualThought {
-        display: none;
-    }
-
-
     body {
         background-color: #ffcc1a;
     }
+
 
      #Wrapper {
         background-color: #fff;
         background-image: url("/themes/main/images/mobile-webdesign-wide.gif")!important;
         background-position: right top;
         background-repeat: no-repeat;
-        padding-top: 166px;
+        padding-top: 156px;
     }
 
-     #Layout,
-     body.has-random-image #Layout,
-     footer {
-        max-width: none;
-        padding-left: 0;
-        padding-right: 0;
-        padding-top: 0px;
+    #Wrapper #Layout {
+        padding: 0;
+
     }
 
-
-     #Breadcrumbs {
-        padding: 10px;
-        margin-left: 35px;
-        top: 170px;
-    }
-
-
-     h1#PageTitle {
-        padding-top: 0.5em!important;
-    }
-
-    body #LayoutHolder,
+    body #PageSpecificHolder,
     body #Wrapper footer {
         padding: 40px;
     }
 
+    #Layout #PageSpecificHolder .main-section {
+        width: auto;
+        margin-right: 0;
+        float: none;
+    }
 
 
+     #Breadcrumbs {
+        padding: 0px;
+        left: 40px;
+        top: 170px;
+        margin: 0;
+        position: absolute;
+    }
 
-     #Layout #Sidebar {
-        position: relative!important;
-        right: auto!important;
-        top: auto!important;
-        width: auto!important;
+    #Layout aside {
+        float: none;
+        width: auto;
+    }
+    #Layout #Sidebar {
         margin-bottom: 10px!important;
     }
 
@@ -535,23 +483,64 @@ body.has-menu-overlay:after {
         padding: 0.5em;
         text-align: center;
     }
+
+
+
+
+    body.has-menu-overlay #RandomVisualThought {
+        position: fixed;
+        z-index: 12;
+        bottom: 20px;
+        left: 20px;
+        margin: 0!important;
+    }
+
+
+    body.has-random-image #Wrapper {
+        background-color: transparent;
+    }
+
+
+    body.has-random-image .main-section {
+        border-top: none;
+        margin-top: 0;
+        margin-left: 0;
+        border-radius: 0;
+    }
+
+
+    body.has-random-image #RandomVisualThought {
+        display: none;
+    }
+    footer *, #Breadcrumbs, #Breadcrumbs * {
+        font-size: 12px!important;
+    }
+
 }
 
 @media screen and (max-width: 480px) {
-    body #LayoutHolder, body #Wrapper footer {
+    body #PageSpecificHolder, body #Wrapper footer {
         padding: 20px;
     }
     #Breadcrumbs {
-       margin-left: 15px;
+       left: 20px;
+       top: 140px;
+       margin: 0;
    }
+
 }
 
 @media screen and (max-width: 380px) {
-    body #LayoutHolder, body #Wrapper footer {
+    body #PageSpecificHolder, body #Wrapper footer {
         padding: 10px;
     }
     #Breadcrumbs {
-       margin-left: 5px;
-       top: 160px;
+        margin: 0;
+        left: 10px;
+    }
+   body.has-menu-overlay #RandomVisualThought {
+       left: 10px;
+       bottom: 10px;
    }
+
 }

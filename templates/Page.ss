@@ -24,17 +24,15 @@
 </head>
 <body id="Body$ClassName" class="mobileBrowsing">
 <div id="Wrapper">
-    <div id="Container">
-        <% include Navigation %>
-        <div id="Layout" class="typography">
-            <a href="#" class="menuButton">menu</a>
-            <% include Breadcrumbs %>
-            <div id="LayoutHolder">$Layout</div>
-            <footer>
-                <span class="backToTop"><a href="#Wrapper">back to top</a></span>
-                <div id="CopyrightMessage">$SiteConfig.CopyrightNotice</div>
-            </footer>
-        </div>
+    <% include Navigation %>
+    <a href="#" class="menuButton">menu</a>
+    <div id="Layout">
+        <% include Breadcrumbs %>
+        <div id="PageSpecificHolder">$Layout</div>
+        <footer class="typography">
+            <span class="backToTop"><a href="#Wrapper">back to top</a></span>
+            <div id="CopyrightMessage">$SiteConfig.CopyrightNotice</div>
+        </footer>
     </div>
 </div>
 
