@@ -29,7 +29,10 @@
     <div id="Layout">
         <% include Breadcrumbs %>
         <div id="PageSpecificHolder">
-        <% if $IsThirdPartyTemplateLayout %>
+        <% if $IsInHouseTemplate %>
+            $Layout
+        <% else %>
+
             <main class="main-section content-container with-sidebar">
                 <div class="typography content-padding">
                 $Layout
@@ -43,8 +46,7 @@
                     <div class="sidebarBottom"></div>
                 </div>
             </aside>
-        <% else %>
-            $Layout
+
         <% end_if %>
         </div>
         <footer class="typography">
