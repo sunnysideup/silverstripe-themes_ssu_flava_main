@@ -1,88 +1,16 @@
-;
-jQuery("#Sidebar, #nav").hide();
 
 (function($) {
-	jQuery(document).ready(
-		function() {
-			//must do first!
-			windowResizer.init();
-			SSUhoverMenu.init();
+    jQuery(document).ready(
+        function() {
+            //must do first!
+            windowResizer.init();
+            SSUhoverMenu.init();
 
-		}
-	);
+        }
+    );
 
 })(jQuery);
 
-
-var SSUhoverMenu = {
-
-	init: function(){
-		jQuery(".menuButton").on(
-			"click",
-			function() {
-				jQuery("aside").slideToggle();
-				jQuery("body").toggleClass("hasMenuOverlay");
-				if(jQuery("body").hasClass("hasMenuOverlay")) {
-					jQuery("nav#MainMenu").prependTo("aside");
-				}
-				else {
-					jQuery("nav#MainMenu").prependTo("Container");
-				}
-				return false;
-			}
-		);
-	},
-
-	mobileBrowsing: true,
-	set_mobileBrowsing: function(b) {this.mobileBrowsing = b;},
-	animateIn: {opacity: "1"},
-	animateOut: {opacity: "0.85"},
-
-	reset: function() {
-		jQuery("body").removeClass("hasMenuOverlay");
-		jQuery("#Nav").show();
-		jQuery(".hasCSSHover").removeClass("hasCSSHover");
-
-		if(this.mobileBrowsing) {
-			jQuery("aside").hide();
-		}
-		else {
-			jQuery("aside").show();
-			jQuery("#Nav li.level1").hoverIntent(
-				{
-					over: SSUhoverMenu.menuIn,  // function = onMouseOver callback (required)
-					timeout: 200,   // number = milliseconds delay before onMouseOut function call
-					out: SSUhoverMenu.menuOut  // function = onMouseOut callback (required)
-				}
-			);
-			jQuery("#Nav").hoverIntent(
-				{
-					over: function(){jQuery(this).animate(SSUhoverMenu.animateIn).addClass("menuIn").removeClass("menuOut");},  // function = onMouseOver callback (required)
-					timeout: 1500,   // number = milliseconds delay before onMouseOut function call
-					out: function(){jQuery(this).animate(SSUhoverMenu.animateOut).addClass("menuOut").removeClass("menuIn");}  // function = onMouseOut callback (required)
-				}
-			);
-			jQuery("#Nav").children("li").each(
-				function(i, el) {
-					var parentOffset = jQuery(el).offset();
-					var left = parentOffset.left;
-					var docWidth = jQuery(document).width();
-					if(left > (docWidth - 270)) {
-						left = docWidth - 270;
-					}
-					leftString = left + "px";
-					jQuery(el).children("ul").animate({paddingLeft: leftString});
-				}
-			);
-			jQuery("#Nav").animate(SSUhoverMenu.animateOut).addClass("menuOut").removeClass("menuIn");
-		}
-	},
-
-	menuIn: function() {jQuery(this).children("ul").slideDown()},
-
-	menuOut: function() {jQuery(this).children("ul").slideUp()}
-
-}
 
 
 /*
@@ -93,129 +21,161 @@ var SSUhoverMenu = {
 
 var windowResizer = {
 
-	windowWidth: 0,
+    windowWidth: 0,
 
-	windowHeight: 0,
+    windowHeight: 0,
 
-	minWrapperWidth: 530,
+    smallScreenMaxSize: 960,
 
-	minWrapperHeight: 400,
-		set_min_wrapper_height: function(v) {this.minWrapperHeight = v;},
+    standardSidebarWidth: 200,
 
-	maxWrapperWidth: 1920,
+    init : function() {
+        windowResizer.randomImageClick();
+        windowResizer.menuButton();
+        //redo when window is resized
+    },
 
-	maxWrapperHeight: 1449,
+    menuButton:function(){
+        jQuery(".menuButton").on(
+            "click",
+            function() {
+                jQuery("body").toggleClass("has-menu-overlay");
+                return false;
+            }
+        );
+    },
 
-	smallScreenMaxSize: 960,
+    randomImageClick: function() {
+        if(jQuery("#RandomVisualThought").length > 0) {
+            jQuery("#RandomVisualThought").unbind('click');
+            jQuery("#RandomVisualThought").click(
+                function(event) {
+                    event.preventDefault();
+                    if(jQuery('#RandomImageLarge').length > 0) {
+                        jQuery('#RandomImageLarge').remove();
+                        jQuery('body').removeClass('has-random-image');
+                        jQuery('#RandomVisualThoughtHeader').after(jQuery('#RandomVisualThought'));
 
-	imageWidth: "",
+                    } else {
+                        var url = jQuery(this).attr("rel");
+                        jQuery("body")
+                            .prepend('<div id="RandomImageLarge" style="background-image: url('+url+'); background-size: cover;"></div>');
+                        jQuery("body").removeClass("has-menu-overlay");
+                        jQuery('#RandomImageLarge').css('zIndex', 999);
+                        jQuery("body")
+                            .addClass('transition-to-has-random-image');
+                        windowResizer.imageflicker('#RandomImageLarge', 0);
 
-	imageHeight: "",
+                    }
+                    return false;
+                }
+            );
+        }
+    },
 
-	imageSelector : '#RandomVisualThought',
+    getWindowSizing : function(){
+        this.windowWidth = window.innerWidth;
+        this.windowHeight = window.innerHeight;
+    },
 
-	init : function() {
-		windowResizer.manageSidebar();
-		if(jQuery("#RandomVisualThought").length > 0) {
-			jQuery("#RandomVisualThought").click(
-				function(el) {
-					var url = jQuery(this).attr("rel");
-					jQuery("body").append('<div id="RandomImageLarge"><img src="'+url+'" alt="random image large" /></div>');
-					jQuery("#RandomImageLarge")
-						//.css('background-image', 'url('+url+')')
-						.click(
-							function(){
-								jQuery(this).remove();
-								jQuery(document).removeAttr("keydown");
-							}
-						);
-					windowResizer.resizeImage();
-					jQuery(document).keydown(
-						function(e) {
-							if(jQuery('#RandomImageLarge').length) {
-								if (e.which == 27) {jQuery('#RandomImageLarge').click(); }  // esc   (does not work)
-							}
-						}
-					);
-				}
-			);
-		}
-		//redo when window is resized
-		jQuery(window).resize(
-			function() {
-				windowResizer.manageSidebar();
-				if(jQuery("#RandomImageLarge").length) {
-					windowResizer.resizeImage();
-				}
-			}
-		);
-	},
+    imageflicker: function(selector, count) {
+        if(typeof count === 'undefined') {
+            count = 0;
+        }
+        count++;
 
-	resizeImage : function() {
-		//get window height
-		this.getWindowSizing();
-		//width within boundaries
-		if(1 == 2) {
-			if(this.windowWidth < this.minWrapperWidth) {
-				this.windowWidth = this.minWrapperWidth;
-			}
-			if(this.windowWidth > this.maxWrapperWidth) {
-				this.windowWidth = this.maxWrapperWidth;
-			}
-			//height within boundaries
-			if(this.windowHeight < this.minWrapperHeight) {
-				this.windowHeight = this.minWrapperHeight;
-			}
-			if(this.windowHeight > this.maxWrapperHeight) {
-				this.windowHeight = this.maxWrapperHeight;
-			}
-		}
-		var image = this.getImage();
+        if(windowResizer.isEven(count)) {
+            jQuery(selector).hide();
+        } else {
+            jQuery(selector).show();
+        }
+        if(count < 28) {
+            var wait = Math.floor(Math.random() * 60);
+            window.setTimeout(
+                function() {windowResizer.imageflicker(selector, count);},
+                wait
+            );
+        }
+        else {
+            jQuery('#RandomVisualThought').appendTo('body');
+            jQuery(selector).css('zIndex', 0);
+            jQuery(selector).show();
+            jQuery("body")
+                .addClass('has-random-image')
+                .removeClass('transition-to-has-random-image');
+        }
+    },
 
-		// 2) Center image in the middle
-		this.imageWidth = 'auto';
-		this.imageHeight = this.windowHeight + 'px';
-		image.width(windowResizer.imageWidth).height(windowResizer.imageHeight);
-		if(jQuery(image).width() > jQuery(image).height()) {
-			if(jQuery(image).width() < this.windowWidth) {
-				this.imageWidth = this.windowWidth + 'px';
-				this.imageHeight = 'auto';
-				image.width(windowResizer.imageWidth).height(windowResizer.imageHeight);
-			}
-		}
-		if(jQuery(image).height() > this.windowHeight) {
-			var heightDifference = jQuery(image).height() - this.windowHeight;
-			jQuery(image).css("margin-top", "-"+Math.round(heightDifference / 2)+"px" )
-		}
-	},
+    isEven: function(n) {
+        n = Number(n);
+        return n === 0 || !!(n && !(n%2));
+    }
+}
 
 
-	getImage : function() {
-		return jQuery('#RandomImageLarge img');
-	},
 
-	standardSidebarWidth: 200,
+var SSUhoverMenu = {
 
-	manageSidebar: function(){
-		this.getWindowSizing();
-		if(this.windowWidth < this.smallScreenMaxSize) {
-			jQuery("body").addClass("mobileBrowsing");
-			jQuery("#Sidebar").width(jQuery("#LayoutHolder").width()+"px").show();
-			SSUhoverMenu.set_mobileBrowsing(true);
-			SSUhoverMenu.reset();
-		}
-		else {
-			jQuery("body").removeClass("mobileBrowsing");
-			jQuery("#Sidebar").width(this.standardSidebarWidth+"px").show();
-			SSUhoverMenu.set_mobileBrowsing(false);
-			SSUhoverMenu.reset();
-		}
-	},
+    init: function(){
+        this.reset();
+    },
+    mobileBrowsing: true,
+    animateIn: {opacity: "1"},
+    animateOut: {opacity: "0.85"},
 
-	getWindowSizing : function(){
-		this.windowWidth = window.innerWidth;
-		this.windowHeight = window.innerHeight;
-	}
+    reset: function() {
+        // jQuery("body").removeClass("has-menu-overlay");
+        // jQuery("#Nav").show();
+        // jQuery(".hasCSSHover").removeClass("hasCSSHover");
+        jQuery("#Nav li.level1").hoverIntent(
+            {
+                over: SSUhoverMenu.menuIn,  // function = onMouseOver callback (required)
+                timeout: 200,   // number = milliseconds delay before onMouseOut function call
+                out: SSUhoverMenu.menuOut  // function = onMouseOut callback (required)
+            }
+        );
+        jQuery("#Nav").hoverIntent(
+            {
+                over: function(){
+                    jQuery(this)
+                        .animate(SSUhoverMenu.animateIn)
+                        .addClass("menuIn")
+                        .removeClass("menuOut");
+                },  // function = onMouseOver callback (required)
+                timeout: 1500,   // number = milliseconds delay before onMouseOut function call
+                out: function(){
+                    jQuery(this)
+                        .animate(SSUhoverMenu.animateOut)
+                        .addClass("menuOut")
+                        .removeClass("menuIn");
+                }  // function = onMouseOut callback (required)
+            }
+        );
+        jQuery("#Nav").children("li").each(
+            function(i, el) {
+                var parentOffset = jQuery(el).offset();
+                var left = parentOffset.left;
+                var docWidth = jQuery(document).width();
+                if(left > (docWidth - 270)) {
+                    left = docWidth - 270;
+                }
+                leftString = left + "px";
+                jQuery(el).children("ul").animate({paddingLeft: leftString});
+            }
+        );
+        jQuery("#Nav")
+            .animate(SSUhoverMenu.animateOut)
+            .addClass("menuOut")
+            .removeClass("menuIn");
+    },
+
+    menuIn: function() {
+        jQuery(this).children("ul").slideDown()
+    },
+
+    menuOut: function() {
+        jQuery(this).children("ul").slideUp()
+    }
 
 }
 
@@ -251,79 +211,79 @@ var windowResizer = {
 * @author    Brian Cherne brian(at)cherne(dot)net
 */
 ;(function($) {
-	$.fn.hoverIntent = function(f,g) {
-		// default configuration options
-		var cfg = {
-			sensitivity: 7,
-			interval: 100,
-			timeout: 0
-		};
-		// override configuration options with user supplied object
-		cfg = $.extend(cfg, g ? { over: f, out: g } : f );
+    $.fn.hoverIntent = function(f,g) {
+        // default configuration options
+        var cfg = {
+            sensitivity: 7,
+            interval: 100,
+            timeout: 0
+        };
+        // override configuration options with user supplied object
+        cfg = $.extend(cfg, g ? { over: f, out: g } : f );
 
-		// instantiate variables
-		// cX, cY = current X and Y position of mouse, updated by mousemove event
-		// pX, pY = previous X and Y position of mouse, set by mouseover and polling interval
-		var cX, cY, pX, pY;
+        // instantiate variables
+        // cX, cY = current X and Y position of mouse, updated by mousemove event
+        // pX, pY = previous X and Y position of mouse, set by mouseover and polling interval
+        var cX, cY, pX, pY;
 
-		// A private function for getting mouse position
-		var track = function(ev) {
-			cX = ev.pageX;
-			cY = ev.pageY;
-		};
+        // A private function for getting mouse position
+        var track = function(ev) {
+            cX = ev.pageX;
+            cY = ev.pageY;
+        };
 
-		// A private function for comparing current and previous mouse position
-		var compare = function(ev,ob) {
-			ob.hoverIntent_t = clearTimeout(ob.hoverIntent_t);
-			// compare mouse positions to see if they've crossed the threshold
-			if ( ( Math.abs(pX-cX) + Math.abs(pY-cY) ) < cfg.sensitivity ) {
-				$(ob).unbind("mousemove",track);
-				// set hoverIntent state to true (so mouseOut can be called)
-				ob.hoverIntent_s = 1;
-				return cfg.over.apply(ob,[ev]);
-			} else {
-				// set previous coordinates for next time
-				pX = cX; pY = cY;
-				// use self-calling timeout, guarantees intervals are spaced out properly (avoids JavaScript timer bugs)
-				ob.hoverIntent_t = setTimeout( function(){compare(ev, ob);} , cfg.interval );
-			}
-		};
+        // A private function for comparing current and previous mouse position
+        var compare = function(ev,ob) {
+            ob.hoverIntent_t = clearTimeout(ob.hoverIntent_t);
+            // compare mouse positions to see if they've crossed the threshold
+            if ( ( Math.abs(pX-cX) + Math.abs(pY-cY) ) < cfg.sensitivity ) {
+                $(ob).unbind("mousemove",track);
+                // set hoverIntent state to true (so mouseOut can be called)
+                ob.hoverIntent_s = 1;
+                return cfg.over.apply(ob,[ev]);
+            } else {
+                // set previous coordinates for next time
+                pX = cX; pY = cY;
+                // use self-calling timeout, guarantees intervals are spaced out properly (avoids JavaScript timer bugs)
+                ob.hoverIntent_t = setTimeout( function(){compare(ev, ob);} , cfg.interval );
+            }
+        };
 
-		// A private function for delaying the mouseOut function
-		var delay = function(ev,ob) {
-			ob.hoverIntent_t = clearTimeout(ob.hoverIntent_t);
-			ob.hoverIntent_s = 0;
-			return cfg.out.apply(ob,[ev]);
-		};
+        // A private function for delaying the mouseOut function
+        var delay = function(ev,ob) {
+            ob.hoverIntent_t = clearTimeout(ob.hoverIntent_t);
+            ob.hoverIntent_s = 0;
+            return cfg.out.apply(ob,[ev]);
+        };
 
-		// A private function for handling mouse 'hovering'
-		var handleHover = function(e) {
-			// copy objects to be passed into t (required for event object to be passed in IE)
-			var ev = jQuery.extend({},e);
-			var ob = this;
+        // A private function for handling mouse 'hovering'
+        var handleHover = function(e) {
+            // copy objects to be passed into t (required for event object to be passed in IE)
+            var ev = jQuery.extend({},e);
+            var ob = this;
 
-			// cancel hoverIntent timer if it exists
-			if (ob.hoverIntent_t) { ob.hoverIntent_t = clearTimeout(ob.hoverIntent_t); }
+            // cancel hoverIntent timer if it exists
+            if (ob.hoverIntent_t) { ob.hoverIntent_t = clearTimeout(ob.hoverIntent_t); }
 
-			// if e.type == "mouseenter"
-			if (e.type == "mouseenter") {
-				// set "previous" X and Y position based on initial entry point
-				pX = ev.pageX; pY = ev.pageY;
-				// update "current" X and Y position based on mousemove
-				$(ob).bind("mousemove",track);
-				// start polling interval (self-calling timeout) to compare mouse coordinates over time
-				if (ob.hoverIntent_s != 1) { ob.hoverIntent_t = setTimeout( function(){compare(ev,ob);} , cfg.interval );}
+            // if e.type == "mouseenter"
+            if (e.type == "mouseenter") {
+                // set "previous" X and Y position based on initial entry point
+                pX = ev.pageX; pY = ev.pageY;
+                // update "current" X and Y position based on mousemove
+                $(ob).bind("mousemove",track);
+                // start polling interval (self-calling timeout) to compare mouse coordinates over time
+                if (ob.hoverIntent_s != 1) { ob.hoverIntent_t = setTimeout( function(){compare(ev,ob);} , cfg.interval );}
 
-			// else e.type == "mouseleave"
-			} else {
-				// unbind expensive mousemove event
-				$(ob).unbind("mousemove",track);
-				// if hoverIntent state is true, then call the mouseOut function after the specified delay
-				if (ob.hoverIntent_s == 1) { ob.hoverIntent_t = setTimeout( function(){delay(ev,ob);} , cfg.timeout );}
-			}
-		};
+            // else e.type == "mouseleave"
+            } else {
+                // unbind expensive mousemove event
+                $(ob).unbind("mousemove",track);
+                // if hoverIntent state is true, then call the mouseOut function after the specified delay
+                if (ob.hoverIntent_s == 1) { ob.hoverIntent_t = setTimeout( function(){delay(ev,ob);} , cfg.timeout );}
+            }
+        };
 
-		// bind the function to the two event listeners
-		return this.bind('mouseenter',handleHover).bind('mouseleave',handleHover);
-	};
+        // bind the function to the two event listeners
+        return this.bind('mouseenter',handleHover).bind('mouseleave',handleHover);
+    };
 })(jQuery);
