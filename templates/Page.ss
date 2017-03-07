@@ -43,14 +43,18 @@
                     <div class="sidebarBottom"></div>
                 </div>
             </aside>
+
         <% else %>
             $Layout
         <% end_if %>
+
         </div>
+
         <footer class="typography">
             <p class="backToTop"><a href="#Wrapper">back to top</a></p>
             <div id="CopyrightMessage">$SiteConfig.CopyrightNotice</div>
         </footer>
+
     </div>
 </div>
 
