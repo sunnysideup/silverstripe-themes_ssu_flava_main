@@ -29,7 +29,7 @@
     <div id="Layout">
         <% include Breadcrumbs %>
         <div id="PageSpecificHolder">
-        <% if $IsStandardPage %>
+        <% if $IsThirdPartyTemplateLayout %>
             <main class="main-section content-container with-sidebar">
                 <div class="typography content-padding">
                 $Layout
