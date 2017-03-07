@@ -28,7 +28,25 @@
     <a href="#" class="menuButton">menu</a>
     <div id="Layout">
         <% include Breadcrumbs %>
-        <div id="PageSpecificHolder">$Layout</div>
+        <div id="PageSpecificHolder">
+        <% if $IsStandardPage %>
+            <main class="main-section content-container with-sidebar">
+                <div class="typography content-padding">
+                $Layout
+                </div>
+            </main>
+
+            <aside>
+                <div id="Sidebar" class="typography content-padding">
+                    <div class="sidebarTop"></div>
+                    <% include Sidebar %>
+                    <div class="sidebarBottom"></div>
+                </div>
+            </aside>
+        <% else %>
+            $Layout
+        <% end_if %>
+        </div>
         <footer class="typography">
             <p class="backToTop"><a href="#Wrapper">back to top</a></p>
             <div id="CopyrightMessage">$SiteConfig.CopyrightNotice</div>
