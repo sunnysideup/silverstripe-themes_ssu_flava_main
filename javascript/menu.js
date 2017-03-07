@@ -29,6 +29,10 @@ var windowResizer = {
 
     standardSidebarWidth: 200,
 
+    didScroll: false,
+
+    lastScrollTop: 0,
+
     init : function() {
         windowResizer.randomImageClick();
         windowResizer.menuButton();
@@ -40,9 +44,63 @@ var windowResizer = {
             "click",
             function() {
                 jQuery("body").toggleClass("has-menu-overlay");
+                jQuery(this)
+                    .removeClass('nav-down')
+                    .removeClass('nav-up');
                 return false;
             }
         );
+        // Hide Header on on scroll down
+
+        $(window).scroll(
+            function(event){
+                windowResizer.didScroll = true;
+            }
+        );
+
+        window.setInterval(
+            function() {
+                if (windowResizer.didScroll) {
+                    windowResizer.hasScrolled();
+                    windowResizer.didScroll = false;
+                }
+            },
+            100
+        );
+
+    },
+
+
+    hasScrolled: function () {
+        if(! jQuery('#MainMenu').is(':visible')) {
+            var st = $(window).scrollTop();
+            var minScroll = 10;
+            var navbarHeight = $('#Layout').offset().top;
+            // Make sure they scroll more than minScroll
+            if(Math.abs(windowResizer.lastScrollTop - st) <= minScroll) {
+                if(st < navbarHeight) {
+                    $('.menuButton').removeClass('nav-down').removeClass('nav-up');
+                }
+                //do nothing
+                return;
+            }
+            // Scroll Down
+            if(st <= navbarHeight) {
+                $('.menuButton').removeClass('nav-down').removeClass('nav-up');
+                return;
+            }
+            if (st > windowResizer.lastScrollTop){
+                $('.menuButton').removeClass('nav-down').addClass('nav-up');
+            } else {
+                // Scroll Up
+                // If did not scroll past the document (possible on mac)...
+                if(st + $(window).height() < $(document).height()) {
+                    $('.menuButton').removeClass('nav-up').addClass('nav-down');
+                }
+            }
+
+            windowResizer.lastScrollTop = st;
+        }
     },
 
     randomImageClick: function() {
