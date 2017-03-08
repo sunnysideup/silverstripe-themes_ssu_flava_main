@@ -190,6 +190,7 @@ body #Wrapper {
 #SidebarChildren li a:hover,
 #SidebarSiblings li a:hover {
     background-color: #ffcc1a;
+    color: #fff;
 }
 
 /**
@@ -239,7 +240,7 @@ footer {
 }
 
 footer *, #Breadcrumbs, #Breadcrumbs * {
-    font-size: 1vw!important;
+    font-size: 1.2vw!important;
 }
 
 #CopyrightMessage {
@@ -342,8 +343,11 @@ footer *, #Breadcrumbs, #Breadcrumbs * {
  body.has-random-image #Wrapper {
      padding-bottom: 100vh;
      overflow: hidden;
- }
+}
 
+body.has-random-image #Breadcrumbs {
+ display: none;
+}
 body.has-random-image #Layout {
     padding-top: 7vh;
 }
@@ -391,12 +395,16 @@ body.has-random-image #RandomVisualThought {
     cursor: pointer;
 }
 
-
 body.has-random-image footer {
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+    left: 0;
+    display: block;
+}
+body.has-random-image footer #CopyrightMessage {
     display: none;
 }
-
-
 
 
 /**
@@ -515,6 +523,17 @@ body.has-menu-overlay:after {
     footer *, #Breadcrumbs, #Breadcrumbs * {
         font-size: 12px!important;
     }
+    body.has-random-image footer {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        display: block;
+    }
+    body.has-random-image footer #CopyrightMessage {
+        display: none;
+    }
+
 
 }
 
@@ -522,10 +541,11 @@ body.has-menu-overlay:after {
     body #PageSpecificHolder, body #Wrapper footer {
         padding: 20px;
     }
+    body #PageSpecificHolder {
+        padding-top: 40px;
+    }
     #Breadcrumbs {
-       left: 20px;
-       top: 140px;
-       margin: 0;
+       display: none;
    }
 
 }
@@ -534,13 +554,14 @@ body.has-menu-overlay:after {
     body #PageSpecificHolder, body #Wrapper footer {
         padding: 10px;
     }
-    #Breadcrumbs {
-        margin: 0;
-        left: 10px;
+    body #PageSpecificHolder {
+        padding-top: 40px;
     }
-   body.has-menu-overlay #RandomVisualThought {
-       left: 10px;
-       bottom: 10px;
-   }
+    body.has-random-image #PageSpecificHolder {
+        padding: 0px;
+    }
+    body.has-random-image #PageSpecificHolder {
+        padding-top: 0px;
+    }
 
 }

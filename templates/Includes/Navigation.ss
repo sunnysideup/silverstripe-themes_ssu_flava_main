@@ -1,6 +1,8 @@
 <nav id="MainMenu">
     <ul id="Nav">
-        <% loop Menu(1) %><li class="$LinkingMode level1"><a class="$LinkingMode level1" href="$Link">$MenuTitle</a>
+        <% loop Menu(1) %><li class="$LinkingMode level1">
+       
+            <a class="$LinkingMode level1" href="$Link">$MenuTitle</a>
         <% if Children %>
         <ul>
             <% loop Children %><% if ShowInMenus %>

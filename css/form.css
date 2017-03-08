@@ -48,7 +48,7 @@
 .typography .middleColumn textarea,
 .typography .middleColumn select,
 .typography .middleColumn span.readonly {
-    border: 1px solid #f2f2f2;
+    border: 1px solid #f8f8f8;
     padding: 0.7em;
     font-family: Arial, Verdana,helvetica, sans-serif;
     margin-top: 0px;
@@ -66,11 +66,8 @@
 .typography textarea,
 .typography select,
 .typography .middleColumn span.readonly  {
-    -webkit-border-bottom-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    -moz-border-radius-bottomright: 5px;
     background-color: #f8f8f8;
-    border-bottom: 1px solid #aaa!important;
+    border-bottom: 3px solid #ccc!important;
 }
 
 
@@ -83,13 +80,17 @@
 .typography .middleColumn input:focus,
 .typography .middleColumn textarea:focus,
 .typography .middleColumn select:focus {
-    -webkit-box-shadow: 0px 0px 5px #ffcc1a;
-    -moz-box-shadow: 0px 0px 5px #ffcc1a;
-    box-shadow: 0px 0px 5px #ffcc1a;
     color: #FF336D;
     outline: none!important;
 }
 
+.typography input[type=text]:focus,
+.typography input[type=email]:focus,
+.typography input[type=password]:focus,
+.typography textarea:focus,
+.typography select:focus{
+    border-bottom: 3px solid #ffcc1a!important;
+}
 
 
 /**
@@ -142,18 +143,15 @@
     padding: 0.3em;
     text-align: center;
     border-bottom: 1px solid #D3D4B6;
-    -webkit-border-bottom-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    -moz-border-radius-bottomright: 5px;
     color: #FF336D;
-    max-width: calc(40em + 0.3em);
+    max-width: calc(40em);
 }
 
 
 .typography .field span.message {
     margin-top: 0.5em;
     display: block;
-    max-width: calc(40em + 0.5em);
+    max-width: calc(40em);
     padding: 0.5em;
 }
 
@@ -210,7 +208,7 @@
     text-decoration: none!important;
     padding-right: 17px!important;
     color: #808383;
-    min-width: 17em;
+    width: auto;
     text-align: center;
 }
 
@@ -286,7 +284,6 @@
     margin-top: 0px;
     padding-top: 0px;
     width: 19em;
-    margin-bottom: 0.7em!important;
     float: left;
     max-width: calc(40em + 3em);
 }
@@ -322,7 +319,6 @@
 .optionset li {
     padding: 0px!important;
     margin: 0px!important;
-    margin-top: 10px!important;
     width: 100%;
 }
 
@@ -347,15 +343,14 @@
 .optionset li input + label,
 .optionset li input[type='radio'] + label,
 .field.checkbox input + label {
-    background-color: #fafafa;
-    border: 1px solid #cfd4d4;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05),inset 0px -15px 10px -12px rgba(0,0,0,0.05);
-    padding: 18px;
+    background-color: tranparent;
+    border: none;
     border-radius: 3px;
     display: inline-block;
     position: relative;
     -webkit-appearance: none;
     padding-left: 25px;
+    font-size: 16px!important;
 }
 
 /** highlight label when selected **/
@@ -363,10 +358,9 @@
 .optionset li input[type='radio']:checked + label,
 .field.checkbox input:checked + label {
     font-weight: bold;
-    border: 1px solid #808383;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05),inset 0px -15px 10px -12px rgba(0,0,0,0.05),inset 15px 10px -12px rgba(255,255,255,0.1);
+    border: none;
     color: #808383!important;
-    background-color: #ffcc1a;
+    background-color: transparent;
 }
 
 
@@ -378,16 +372,12 @@
 .optionset li input[type='radio']:checked + label:active,
 .field.checkbox input + label:active,
 .field.checkbox input:checked + label:active {
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05),inset 0px 1px 3px rgba(0,0,0,0.1);
-    border-color: #326874;
 }
 
 /** hover state for label **/
 .optionset li:hover input + label,
 .optionset li:hover input[type='radio'] + label,
 .field.checkbox:hover input + label {
-    border: 1px solid #808383;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05),inset 0px -15px 10px -12px rgba(0,0,0,0.05),inset 15px 10px -12px rgba(255,255,255,0.1);
     color: #808383!important;
 }
 
@@ -395,18 +385,25 @@
 .optionset li input + label:after,
 .optionset li input[type='radio'] + label:after,
 .field.checkbox input + label:after {
-    content: '\2714';
+    content: '×';
     font-size: 28px;
     position: absolute;
-    top: 4px;
-    left: 6px;
+    top: 0px;
+    margin-top: -12px;
+    left: 0px;
     color: #d3d4b6;
     opacity: 0.33;
     filter: alpha(opacity=33);
     font-weight: normal;
 }
 
-/** hover state for tick-box **/
+.optionset li input:checked + label:after,
+.optionset li input[type='radio']:checked + label:after,
+.field.checkbox input:checked + label:after {
+    content: '✔';
+}
+
+/** hover state for tick-box */
 .optionset li:hover input + label:after,
 .optionset li:hover input[type='radio'] + label:after,
 .field.checkbox:hover input + label:after {

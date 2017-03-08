@@ -31,7 +31,11 @@ var windowResizer = {
 
     didScroll: false,
 
+    runningScroll: false,
+
     lastScrollTop: 0,
+
+    timeout: null,
 
     init : function() {
         windowResizer.randomImageClick();
@@ -52,54 +56,61 @@ var windowResizer = {
         );
         // Hide Header on on scroll down
 
-        $(window).scroll(
+        jQuery(window).scroll(
             function(event){
                 windowResizer.didScroll = true;
+                if(windowResizer.timeout !== null) {
+                    window.clearTimeout(windowResizer.timeout);
+                }
+                if(windowResizer.runningScroll === false) {
+                    windowResizer.timeout = window.setTimeout(
+                        function() {
+                            windowResizer.hasScrolled();
+                        },
+                        100
+                    );
+                }
             }
         );
 
-        window.setInterval(
-            function() {
-                if (windowResizer.didScroll) {
-                    windowResizer.hasScrolled();
-                    windowResizer.didScroll = false;
-                }
-            },
-            100
-        );
 
     },
 
 
     hasScrolled: function () {
         if(! jQuery('#MainMenu').is(':visible')) {
-            var st = $(window).scrollTop();
+            windowResizer.runningScroll = true;
+            var st = jQuery(window).scrollTop();
             var minScroll = 10;
-            var navbarHeight = $('#Layout').offset().top;
+            var navbarHeight = jQuery('#Layout').offset().top;
             // Make sure they scroll more than minScroll
             if(Math.abs(windowResizer.lastScrollTop - st) <= minScroll) {
                 if(st < navbarHeight) {
-                    $('.menuButton').removeClass('nav-down').removeClass('nav-up');
+                    jQuery('.menuButton').removeClass('nav-down').removeClass('nav-up');
                 }
                 //do nothing
+                windowResizer.runningScroll = false;
                 return;
             }
             // Scroll Down
             if(st <= navbarHeight) {
-                $('.menuButton').removeClass('nav-down').removeClass('nav-up');
+                jQuery('.menuButton').removeClass('nav-down').removeClass('nav-up');
+                windowResizer.runningScroll = false;
                 return;
             }
             if (st > windowResizer.lastScrollTop){
-                $('.menuButton').removeClass('nav-down').addClass('nav-up');
+                jQuery('.menuButton').removeClass('nav-down').addClass('nav-up');
             } else {
                 // Scroll Up
                 // If did not scroll past the document (possible on mac)...
-                if(st + $(window).height() < $(document).height()) {
-                    $('.menuButton').removeClass('nav-up').addClass('nav-down');
+                if(st + jQuery(window).height() < jQuery(document).height()) {
+                    jQuery('.menuButton')
+                        .removeClass('nav-up').addClass('nav-down');
                 }
             }
 
             windowResizer.lastScrollTop = st;
+            windowResizer.runningScroll = false;
         }
     },
 

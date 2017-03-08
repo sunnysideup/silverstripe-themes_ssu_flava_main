@@ -32,6 +32,7 @@
     display: block;
 }
 
+
 #Nav li a:hover, #Nav li.current a, #Nav li.section a {
     color: #ffcc1a;
 }
@@ -177,7 +178,10 @@
     .menuButton.nav-down {
         background-color: #ffcc1a;
         position: fixed;
-        opacity: 1;
+        -webkit-animation: fadein 0.3s linear forwards;
+        animation: fadein 0.3s linear forwards;
+        opacity: 0;
+        top: 10px;
     }
 
     .has-menu-overlay .menuButton {
@@ -189,12 +193,19 @@
 /* For IE8 and earlier */
     }
 
+    @-webkit-keyframes fadein {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+    }
 
+    @keyframes fadein {
+        0% { opacity: 0; }
+        100% { opacity: 0.83; }
+    }
     #Nav li.current li a,
     #Nav li.section  li  a,
     #Nav li.link  li  a {
         text-align: right;
-    }
 
 }
 
