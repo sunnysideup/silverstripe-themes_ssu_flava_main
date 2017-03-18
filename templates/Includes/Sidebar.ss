@@ -42,7 +42,7 @@
     </ul>
     <% if RandomImage %>
     <h3 id="RandomVisualThoughtHeader">For Hipsters</h3>
-    <div id="RandomVisualThought" style="background-image: url($RandomImage);" rel="$RandomImage"></div>
+    <div id="RandomVisualThought" style="background-image: url($RandomImage);" data-rel="$RandomImage"></div>
     <p id="RandomVisualThoughtExplanation">
         Prefer dark web / hipster / random?
     <p>

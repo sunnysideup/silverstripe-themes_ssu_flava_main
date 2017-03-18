@@ -126,7 +126,7 @@ var windowResizer = {
                         jQuery('#RandomVisualThoughtHeader').after(jQuery('#RandomVisualThought'));
 
                     } else {
-                        var url = jQuery(this).attr("rel");
+                        var url = jQuery(this).attr("data-rel");
                         jQuery("body")
                             .prepend('<div id="RandomImageLarge" style="background-image: url('+url+'); background-size: cover;"></div>');
                         jQuery("body").removeClass("has-menu-overlay");
@@ -179,7 +179,7 @@ var windowResizer = {
         n = Number(n);
         return n === 0 || !!(n && !(n%2));
     }
-}
+};
 
 
 
@@ -228,7 +228,7 @@ var SSUhoverMenu = {
                 if(left > (docWidth - 270)) {
                     left = docWidth - 270;
                 }
-                leftString = left + "px";
+                var leftString = left + "px";
                 jQuery(el).children("ul").animate({paddingLeft: leftString});
             }
         );
@@ -239,11 +239,11 @@ var SSUhoverMenu = {
     },
 
     menuIn: function() {
-        jQuery(this).children("ul").slideDown()
+        jQuery(this).children("ul").slideDown();
     },
 
     menuOut: function() {
-        jQuery(this).children("ul").slideUp()
+        jQuery(this).children("ul").slideUp();
     }
 
 }
