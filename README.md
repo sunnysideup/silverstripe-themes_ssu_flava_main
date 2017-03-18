@@ -15,7 +15,7 @@
 
  * [Developer Docs](docs/en/INDEX.md)
  * [User Guide](docs/en/userguide.md)
- * [API](http://ssmods.com/apis/themes_ssu_flava_main/docs/en/api/)
+ * [API Docs](http://docs.ssmods.com/sunnysideup/themes_ssu_flava_main)
 
 ## Requirements
 
