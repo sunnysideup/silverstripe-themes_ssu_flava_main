@@ -29,7 +29,7 @@
 <% end_if %>
 
 
-<div class="sidebarBox" id="RandomImage">
+<div class="sidebarBox">
     <h3>For Developers</h3>
     <p>
         The sites listed below may be of interest to web developers and Silverstripe enthusiasts:
