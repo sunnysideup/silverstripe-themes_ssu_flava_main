@@ -292,6 +292,7 @@ footer *, #Breadcrumbs, #Breadcrumbs * {
     opacity: 0.77;
     margin-top: 10px;
     margin-right: -10px;
+    cursor: pointer;
 }
 
 #RandomImageLarge {
