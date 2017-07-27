@@ -14,7 +14,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     $MetaTags(false)
     <link href="http://fonts.googleapis.com/css?family=Voces" rel="stylesheet" type="text/css" />
-    <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />    
+    <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />
     <% require themedCSS('reset') %>
     <% require themedCSS('typography') %>
     <% require themedCSS('layout') %>
@@ -60,7 +60,6 @@
     </div>
 </div>
     <% require javascript('themes/main/javascript/menu.js') %>
-<!-- include TemplateOverviewPageDevelopmentFooter -->
-<!-- include Analytics -->
+
 </body>
 </html>
