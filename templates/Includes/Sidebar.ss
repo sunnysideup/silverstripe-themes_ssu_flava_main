@@ -1,4 +1,3 @@
-
 <% if $Siblings || $MenuChildren %>
 <div class="sidebarBox" id="SidebarChildren">
 <% if $Siblings %>
@@ -30,6 +29,11 @@
 
 
 <div class="sidebarBox" id="RandomImage">
+    <h3>start-ups we support</h3>
+    <ul>
+        <li><a href="http://www.kaenga.com/">kaenga.com</a>: an organisation that builds co-housing; and</li>
+        <li><a href="http://www.evs.nz/">evs.nz</a>: our effort to support climate change action;</li>
+    </ul>
     <h3>For Developers</h3>
     <p>
         The sites listed below may be of interest to web developers and Silverstripe enthusiasts:
