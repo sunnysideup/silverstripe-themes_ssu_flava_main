@@ -343,7 +343,7 @@
 .optionset li input + label,
 .optionset li input[type='radio'] + label,
 .field.checkbox input + label {
-    background-color: tranparent;
+    background-color: none;
     border: none;
     border-radius: 3px;
     display: inline-block;
@@ -392,16 +392,10 @@
     margin-top: -12px;
     left: 0px;
     color: #d3d4b6;
-    opacity: 0.33;
-    filter: alpha(opacity=33);
+    opacity: 0.66;
     font-weight: normal;
 }
 
-.optionset li input:checked + label:after,
-.optionset li input[type='radio']:checked + label:after,
-.field.checkbox input:checked + label:after {
-    content: '✔';
-}
 
 /** hover state for tick-box */
 .optionset li:hover input + label:after,
@@ -409,25 +403,34 @@
 .field.checkbox:hover input + label:after {
     color: #808383;
     opacity: 0.77;
-    filter: alpha(opacity=77);
+    content: '✔';
 }
 /** hover state for checked tick-box **/
 .optionset li:hover input:checked + label:after,
 .optionset li:hover input[type='radio']:checked + label:after,
 .field.checkbox:hover input:checked + label:after {
-    color: #326874;
+    color: #ffcc1a;
     opacity: 0.77;
     filter: alpha(opacity=77);
 }
 
+/* checked state */
 .optionset li input:checked + label:after,
 .optionset li input[type='radio']:checked + label:after,
 .field.checkbox input:checked + label:after {
-    color: #808383;
-    opacity: 1;
-    filter: alpha(opacity=100);
+    content: '✔';
+    color: #ffcc1a;
 }
 
+/* checked state */
+.optionset li input:checked + label:after,
+.optionset li input[type='radio']:checked + label:after,
+.field.checkbox input:checked + label:after {
+    opacity: 1;
+    color: #ffcc1a;
+}
+
+/* active state */
 .optionset li input + label:active:after,
 .optionset li input[type='radio'] + label:active:after,
 .field.checkbox input + label:active:after {

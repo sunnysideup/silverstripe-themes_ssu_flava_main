@@ -1,6 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Lato);
 
-@import url(http://fonts.googleapis.com/css?family=Voces);
 
 /**
  * global fixes
@@ -15,6 +13,10 @@
 .clear {
     clear: both;
 }
+
+@import url(http://fonts.googleapis.com/css?family=Lato);
+
+@import url(http://fonts.googleapis.com/css?family=Voces);
 
 /**
  * outers and main bits
@@ -290,9 +292,6 @@ footer *, #Breadcrumbs, #Breadcrumbs * {
     opacity: 0.77;
     margin-top: 10px;
     margin-right: -10px;
-}
-
-#RandomImage {
     cursor: pointer;
 }
 
