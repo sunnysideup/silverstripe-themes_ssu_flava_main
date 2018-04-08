@@ -30,26 +30,29 @@
 
 
 <div class="sidebarBox" id="RandomImage">
-    <h3>start-ups we support</h3>
+
+    <h3>for innovation</h3>
     <ul>
-        <li><a href="http://www.kaenga.com/">kaenga.com</a>: an organisation that builds co-housing; and</li>
-        <li><a href="http://www.evs.nz/">evs.nz</a>: our effort to support climate change action;</li>
-    </ul>
-    <h3>For Developers</h3>
-    <p>
-        The sites listed below may be of interest to web developers and Silverstripe enthusiasts:
-    </p>
-    <ul>
-        <li><a href="http://www.silverstripe-ecommerce.com/">silverstripe-ecommerce.com</a>: our e-commerce demo;</li>
-        <li><a href="http://www.ssmods.com/">ssmods.com</a>: find the world's best Silverstripe themes and modules;</li>
-        <li><a href="http://www.upgradesilverstripe.com/">upgradesilverstripe.com</a>: help with upgrading your silverstripe sites; and</li>
-        <li><a href="http://www.silverstripe-webdevelopment.com/">silverstripe-webdevelopment.com</a>: notes for developers.</li>
+        <li><a href="http://www.kaenga.com/">kaenga.com</a>: an organisation promoting innovation in housing; and</li>
+        <li><a href="http://www.evs.nz/">evs.nz</a>: our effort to promote the take up off electric vehicles;</li>
     </ul>
     <% if RandomImage %>
     <h3 id="RandomVisualThoughtHeader">For Hipsters</h3>
     <div id="RandomVisualThought" style="background-image: url($RandomImage);" data-rel="$RandomImage"></div>
     <p id="RandomVisualThoughtExplanation">
-        Prefer dark web / hipster / random?
+        Prefer dark web / hipster? Add the random image.
     <p>
-<% end_if %>
+        <h3>For Developers</h3>
+        <p>
+            The sites listed below may be of interest to web developers and Silverstripe enthusiasts:
+        </p>
+        <ul>
+            <li><a href="http://www.silverstripe-ecommerce.com/">silverstripe-ecommerce.com</a>: our e-commerce demo;</li>
+            <li><a href="http://www.ssmods.com/">ssmods.com</a>: find the world's best Silverstripe themes and modules;</li>
+            <li><a href="http://www.upgradesilverstripe.com/">upgradesilverstripe.com</a>: help with upgrading your silverstripe sites; </li>
+            <li><a href="http://www.silverstripe-webdevelopment.com/">silverstripe-webdevelopment.com</a>: notes for developers; and</li>
+            <li><a href="http://dataobject-generator.silverstripe-webdevelopment.com">data object generator</a>: create Silverstripe models with confidence.</li>
+        </ul>
+
+    <% end_if %>
 </div>
