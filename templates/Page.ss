@@ -13,11 +13,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     $MetaTags(false)
+    <link href="http://fonts.googleapis.com/css?family=Voces" rel="stylesheet" type="text/css" />
+    <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />
     <% require themedCSS('reset') %>
     <% require themedCSS('typography') %>
-    <% require themedCSS('form') %>
     <% require themedCSS('layout') %>
-    <% require javascript('framework/thirdparty/jquery/jquery.js') %>
+    <% require themedCSS('form') %>
+    <% require themedCSS('menu') %>
+    <% require themedCSS('individualPages') %>
+    <% require themedCSS('print', 'print') %>
     <link rel="shortcut icon" href="$ThemeDir/images/favicon.ico" />
     <% end_if %>
 <% end_if %>
@@ -55,8 +59,7 @@
         </footer>
     </div>
 </div>
+    <% require javascript('themes/main/javascript/menu.js') %>
 
-<!-- include TemplateOverviewPageDevelopmentFooter -->
-<!-- include Analytics -->
 </body>
 </html>
