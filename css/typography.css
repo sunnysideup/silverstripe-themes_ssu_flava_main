@@ -1,6 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Lato);
-@import url(http://fonts.googleapis.com/css?family=Voces);
-
+@import url('https://fonts.googleapis.com/css?family=Lato|Voces');
 
 .typography {
     color: #808383;
