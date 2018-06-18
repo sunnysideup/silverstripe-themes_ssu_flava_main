@@ -38,7 +38,6 @@ var windowResizer = {
     timeout: null,
 
     init : function() {
-        windowResizer.randomImageClick();
         windowResizer.menuButton();
         //redo when window is resized
     },
@@ -114,73 +113,7 @@ var windowResizer = {
         }
     },
 
-    randomImageClick: function() {
-        if(jQuery("#RandomVisualThought").length > 0) {
-            jQuery("#RandomVisualThought").unbind('click');
-            jQuery("#RandomVisualThought").click(
-                function(event) {
-                    event.preventDefault();
-                    if(jQuery('#RandomImageLarge').length > 0) {
-                        jQuery('#RandomImageLarge').remove();
-                        jQuery('body').removeClass('has-random-image');
-                        jQuery('#RandomVisualThoughtHeader').after(jQuery('#RandomVisualThought'));
-
-                    } else {
-                        var url = jQuery(this).attr("data-rel");
-                        jQuery("body")
-                            .prepend('<div id="RandomImageLarge" style="background-image: url('+url+'); background-size: cover;"></div>');
-                        jQuery("body").removeClass("has-menu-overlay");
-                        jQuery('#RandomImageLarge').css('zIndex', 999);
-                        jQuery("body")
-                            .addClass('transition-to-has-random-image');
-                        windowResizer.imageflicker('#RandomImageLarge', 0);
-
-                    }
-                    return false;
-                }
-            );
-        }
-    },
-
-    getWindowSizing : function(){
-        this.windowWidth = window.innerWidth;
-        this.windowHeight = window.innerHeight;
-    },
-
-    imageflicker: function(selector, count) {
-        if(typeof count === 'undefined') {
-            count = 0;
-        }
-        count++;
-
-        if(windowResizer.isEven(count)) {
-            jQuery(selector).hide();
-        } else {
-            jQuery(selector).show();
-        }
-        if(count < 28) {
-            var wait = Math.floor(Math.random() * 60);
-            window.setTimeout(
-                function() {windowResizer.imageflicker(selector, count);},
-                wait
-            );
-        }
-        else {
-            jQuery('#RandomVisualThought').appendTo('body');
-            jQuery(selector).css('zIndex', 0);
-            jQuery(selector).show();
-            jQuery("body")
-                .addClass('has-random-image')
-                .removeClass('transition-to-has-random-image');
-        }
-    },
-
-    isEven: function(n) {
-        n = Number(n);
-        return n === 0 || !!(n && !(n%2));
-    }
 };
-
 
 
 var SSUhoverMenu = {
@@ -244,6 +177,11 @@ var SSUhoverMenu = {
 
     menuOut: function() {
         jQuery(this).children("ul").slideUp();
+    },
+
+    getWindowSizing : function(){
+        this.windowWidth = window.innerWidth;
+        this.windowHeight = window.innerHeight;
     }
 
 }
