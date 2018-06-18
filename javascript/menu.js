@@ -113,7 +113,13 @@ var windowResizer = {
         }
     },
 
+    getWindowSizing : function(){
+        this.windowWidth = window.innerWidth;
+        this.windowHeight = window.innerHeight;
+    }
+
 };
+
 
 
 var SSUhoverMenu = {
@@ -177,11 +183,6 @@ var SSUhoverMenu = {
 
     menuOut: function() {
         jQuery(this).children("ul").slideUp();
-    },
-
-    getWindowSizing : function(){
-        this.windowWidth = window.innerWidth;
-        this.windowHeight = window.innerHeight;
     }
 
 }
