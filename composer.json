@@ -27,7 +27,12 @@
         "silverstripe/cms": ">=3.6"
     },
     "extra": {
-        "installer-name": "main"
+        "installer-name": "main",
+        "expose": [
+            "css",
+            "images",
+            "javascript"
+        ]      
     },
     "suggest": {
         "sunnysideup/mysite_ssu_flava_main_cms": "*",
